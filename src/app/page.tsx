@@ -8,7 +8,7 @@ import BuildingHero3D from "@/components/building-hero-3d";
 import { brand } from "@/lib/brand";
 
 // ============================================
-// SERVICII — 6 servicii CRIA CONSTRUCT
+// SERVICII — 6 servicii Conrad Construct
 // ============================================
 const services = [
   {
@@ -62,7 +62,7 @@ const services = [
 ];
 
 // ============================================
-// PROIECTE — 6 proiecte CRIA CONSTRUCT
+// PROIECTE — 6 proiecte Conrad Construct
 // ============================================
 const projects = [
   {
@@ -110,7 +110,7 @@ const projects = [
 ];
 
 // ============================================
-// VALORI — 4 valori CRIA CONSTRUCT
+// VALORI — 4 valori Conrad Construct
 // ============================================
 const values = [
   { icon: ShieldCheck, title: "Durabilitate", text: "Construim cu materiale de top pentru rezistență în timp. Calitatea lucrarilor este asigurată de echipamentele utilizate." },
@@ -254,7 +254,7 @@ export default function HomePage() {
               <div className="rounded-2xl overflow-hidden glass">
                 <img
                   src="/edil/about.png"
-                  alt="CRIA CONSTRUCT"
+                  alt="Conrad Construct"
                   className="w-full h-[400px] object-cover"
                 />
               </div>
