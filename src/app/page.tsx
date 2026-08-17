@@ -8,7 +8,7 @@ import BuildingHero3D from "@/components/building-hero-3d";
 import { brand } from "@/lib/brand";
 
 // ============================================
-// SERVICII — 6 servicii Conrad Construct
+// SERVICII — 6 servicii ACTUAL DAVID Construct
 // ============================================
 const services = [
   {
@@ -62,7 +62,7 @@ const services = [
 ];
 
 // ============================================
-// PROIECTE — 6 proiecte Conrad Construct
+// PROIECTE — 6 proiecte ACTUAL DAVID Construct
 // ============================================
 const projects = [
   {
@@ -110,7 +110,7 @@ const projects = [
 ];
 
 // ============================================
-// VALORI — 4 valori Conrad Construct
+// VALORI — 4 valori ACTUAL DAVID Construct
 // ============================================
 const values = [
   { icon: ShieldCheck, title: "Durabilitate", text: "Construim cu materiale de top pentru rezistență în timp. Calitatea lucrarilor este asigurată de echipamentele utilizate." },
@@ -254,7 +254,7 @@ export default function HomePage() {
               <div className="rounded-2xl overflow-hidden glass">
                 <img
                   src="/edil/about.png"
-                  alt="Conrad Construct"
+                  alt="ACTUAL DAVID Construct"
                   className="w-full h-[400px] object-cover"
                 />
               </div>
