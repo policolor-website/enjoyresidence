@@ -7,7 +7,7 @@ import BuildingHero3D from "@/components/building-hero-3d";
 import { brand } from "@/lib/brand";
 
 // ============================================
-// SERVICII — 6 servicii PZ & GZ CONSTRUCT
+// SERVICII — 6 servicii CRIA CONSTRUCT
 // ============================================
 const services = [
   {
@@ -61,7 +61,7 @@ const services = [
 ];
 
 // ============================================
-// PROIECTE — 6 proiecte PZ & GZ CONSTRUCT
+// PROIECTE — 6 proiecte CRIA CONSTRUCT
 // ============================================
 const projects = [
   {
@@ -109,7 +109,7 @@ const projects = [
 ];
 
 // ============================================
-// VALORI — 4 valori PZ & GZ CONSTRUCT
+// VALORI — 4 valori CRIA CONSTRUCT
 // ============================================
 const values = [
   { icon: ShieldCheck, title: "Durabilitate", text: "Construim cu materiale de top pentru rezistență în timp. Calitatea lucrarilor este asigurată de echipamentele utilizate." },
@@ -231,7 +231,7 @@ export default function HomePage() {
               <div className="rounded-2xl overflow-hidden glass">
                 <img
                   src="/edil/about.png"
-                  alt="PZ & GZ CONSTRUCT"
+                  alt="CRIA CONSTRUCT"
                   className="w-full h-[400px] object-cover"
                 />
               </div>
