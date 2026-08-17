@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowRight, MapPin, Building2, Home, Wrench, PaintBucket, Zap, PencilRuler, Award, ShieldCheck, Sparkles, TrendingUp, Users, Clock, Briefcase } from "lucide-react";
@@ -119,6 +120,25 @@ const values = [
 ];
 
 export default function HomePage() {
+  const [scrollProgress, setScrollProgress] = useState(0);
+
+  useEffect(() => {
+    const onScroll = () => {
+      const scrollY = window.scrollY;
+      const heroHeight = window.innerHeight * 4;
+      const animRange = heroHeight - window.innerHeight;
+      setScrollProgress(Math.max(0, Math.min(1, scrollY / animRange)));
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  // Fade out hero text as assembly begins (0 → 0.15 scroll)
+  const heroTextOpacity = scrollProgress < 0.15
+    ? 1 - (scrollProgress / 0.15)
+    : 0;
+
   return (
     <main>
       {/* ============================================ */}
@@ -129,7 +149,10 @@ export default function HomePage() {
           <BuildingHero3D />
           <div className="absolute inset-0 z-[1] bg-gradient-to-b from-ink/40 via-transparent to-ink/80 pointer-events-none" />
 
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 w-full max-w-4xl text-center px-6 pointer-events-none">
+          <div
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 w-full max-w-4xl text-center px-6 pointer-events-none transition-opacity duration-300"
+            style={{ opacity: heroTextOpacity }}
+          >
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
