@@ -419,7 +419,7 @@ export default function HomePage() {
                   style={{ willChange: "transform, opacity" }}
                 >
                   <Link
-                    href={`/proiecte/${p.slug}`}
+                    href={`/portofoliu/${p.slug}`}
                     className="group block glass rounded-2xl overflow-hidden hover:border-gold/30 transition-all duration-500 h-full"
                   >
                     <div className="relative h-64 overflow-hidden">
