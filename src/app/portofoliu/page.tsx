@@ -2,50 +2,32 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { MapPin } from "lucide-react";
+import { MapPin, ArrowRight } from "lucide-react";
 
 const projects = [
   {
-    slug: "art-temple-residence",
-    name: "Art Temple Residence",
+    slug: "asfaltare-curte-general-berthelot",
+    name: "Asfaltare Curte — Str. General Berthelot",
     area: "București",
-    category: "Construcții Civile",
-    image: "/edil/art-temple.jpg",
+    category: "Comercial",
+    description: "Asfaltare curte în strada General Berthelot, București. Lucrare de asfaltare cu pregătire teren și strat de uzură.",
+    image: "https://www.constructii-instalatii.ro/wp-content/uploads/2018/04/Asfaltare-Curte-in-strada-General-Berthelot-Bucuresti-1.jpg",
   },
   {
-    slug: "city-lights-pipera",
-    name: "City Lights Pipera",
-    area: "Pipera, Ilfov",
-    category: "Construcții Civile",
-    image: "/edil/city-lights.jpg",
+    slug: "asfaltare-parcare-cora-pantelimon",
+    name: "Asfaltare Parcare — CORA Pantelimon",
+    area: "Pantelimon, Ilfov",
+    category: "Comercial",
+    description: "Asfaltare parcare la CORA Pantelimon. Lucrare de mare anvergură pentru spațiu comercial.",
+    image: "https://www.constructii-instalatii.ro/wp-content/uploads/2018/04/Asfaltare-Parcare-la-CORA-Pantelimon-3.jpg",
   },
   {
-    slug: "dream-residence",
-    name: "Dream Residence",
+    slug: "asfaltare-parcare-romexpo",
+    name: "Asfaltare Parcare și Plombare Gropi — ROMEXPO",
     area: "București",
-    category: "Construcții Civile",
-    image: "/edil/dream-residence.jpg",
-  },
-  {
-    slug: "confort-urban",
-    name: "Confort Urban",
-    area: "București",
-    category: "Construcții Civile",
-    image: "/edil/confort-urban.png",
-  },
-  {
-    slug: "central-address-residence",
-    name: "Central Address Residence",
-    area: "București",
-    category: "Construcții Civile",
-    image: "/edil/central-address.jpg",
-  },
-  {
-    slug: "envogue-residence",
-    name: "Envogue Residence",
-    area: "București",
-    category: "Construcții Civile",
-    image: "/edil/envogue.jpg",
+    category: "Comercial",
+    description: "Asfaltare parcare și plombare gropi la ROMEXPO. Lucrare de reparații și reabilitare infrastructură parcare.",
+    image: "https://www.constructii-instalatii.ro/wp-content/uploads/2015/12/Asfaltare-Parcare-si-Plombare-Gropi-la-ROMEXPO-5.jpg",
   },
 ];
 
@@ -61,9 +43,9 @@ export default function PortfolioPage() {
             className="text-center mb-16"
           >
             <span className="text-xs tracking-[0.3em] uppercase text-gold mb-4 block">Portofoliu</span>
-            <h1 className="font-display text-4xl md:text-6xl font-bold text-cream mb-6">Proiectele noastre</h1>
+            <h1 className="font-display text-4xl md:text-6xl font-bold text-cream mb-6">Lucrările noastre</h1>
             <p className="text-lg text-ash max-w-2xl mx-auto">
-              Proiectele noastre ne recomandă!
+              Construim, amenajăm, reabilităm, renovăm. Câteva dintre proiectele noastre ne recomandă.
             </p>
           </motion.div>
 
@@ -112,6 +94,26 @@ export default function PortfolioPage() {
               );
             })}
           </div>
+
+          {/* CTA */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.6 }}
+            className="mt-16 glass rounded-2xl p-8 text-center"
+          >
+            <h3 className="font-display text-2xl font-bold text-cream mb-4">
+              Aveți un proiect similar? Contactați-ne!
+            </h3>
+            <p className="text-ash mb-6">Echipa noastră vă poate ajuta cu un proiect la fel de reușit.</p>
+            <Link
+              href="/contact"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-gold text-ink font-semibold rounded-lg hover:bg-gold-light transition-colors duration-300"
+            >
+              Obțineți o cotație <ArrowRight size={18} />
+            </Link>
+          </motion.div>
         </div>
       </section>
     </main>

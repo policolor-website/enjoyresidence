@@ -1,15 +1,14 @@
 import type { Metadata } from "next";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
-import Chef3DWrapper from "@/components/chef-3d-wrapper";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "ACTUAL DAVID Construct | Construcții București și Ilfov",
-  description: "Construcții civile și industriale, construcții case, mentenanță, amenajări interioare, instalații electrice și sanitare, proiectare. Peste 20 ani experiență.",
+  title: "CONSTRUCTII INSTALATII | Construcții și Instalații București și Ilfov",
+  description: "Construcții civile, industriale și rezidențiale, drumuri, poduri, instalații electrice și sanitare, renovări, amenajări. 20 de ani experiență. Telefon: 0737 230 230.",
   openGraph: {
-    title: "ACTUAL DAVID Construct | Construcții București și Ilfov",
-    description: "Cu o experiență de peste 20 de ani, realizăm proiecte complexe și oferim soluții moderne. 342+ proiecte, 270+ clienți mulțumiți.",
+    title: "CONSTRUCTII INSTALATII | Construcții și Instalații București și Ilfov",
+    description: "Realizăm lucrări de mare anvergură în construcții civile, industriale, rezidențiale, drumuri, poduri și restaurări. Companie cu 20 de ani de experiență.",
     locale: "ro_RO",
     type: "website",
   },
@@ -28,7 +27,6 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..700&family=Inter:wght@300..700&display=swap" rel="stylesheet" />
       </head>
       <body className="min-h-full flex flex-col bg-ink text-cream font-body relative">
-        <Chef3DWrapper />
         <Header />
         <div className="relative z-10 flex flex-col flex-1 pt-20">
           {children}

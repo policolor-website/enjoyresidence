@@ -12,47 +12,26 @@ const projectsData: Record<string, {
   description: string;
   image: string;
 }> = {
-  "art-temple-residence": {
-    name: "Art Temple Residence",
+  "asfaltare-curte-general-berthelot": {
+    name: "Asfaltare Curte — Str. General Berthelot",
     area: "București",
-    category: "Construcții Civile",
-    description: "Art Temple Residence este un proiect de construcții civile realizat de ACTUAL DAVID Construct în București. Complexul rezidențial beneficiază de structură modernă, materiale de calitate superioară și finisaje premium. Proiectul demonstrează capacitatea echipei noastre de a livra construcții la standarde ridicate, respectând termenele și bugetul stabilit.",
-    image: "/edil/art-temple.jpg",
+    category: "Comercial",
+    description: "Asfaltare curte în strada General Berthelot, București. Lucrarea a inclus pregătirea terenului, aducerea de agregate și executarea stratului de uzură asfaltic. Asfaltarea curții a fost realizată cu utilaje proprii, respectând termenele stabilite cu beneficiarul.",
+    image: "https://www.constructii-instalatii.ro/wp-content/uploads/2018/04/Asfaltare-Curte-in-strada-General-Berthelot-Bucuresti-1.jpg",
   },
-  "city-lights-pipera": {
-    name: "City Lights Pipera",
-    area: "Pipera, Ilfov",
-    category: "Construcții Civile",
-    description: "City Lights Pipera este un proiect de construcții civile în zona Pipera, Ilfov. Complexul a fost construit cu materiale de top, respectând toate standardele de siguranță și durabilitate. Echipa ACTUAL DAVID Construct a gestionat întregul proiect de la fundație la finisaje.",
-    image: "/edil/city-lights.jpg",
+  "asfaltare-parcare-cora-pantelimon": {
+    name: "Asfaltare Parcare — CORA Pantelimon",
+    area: "Pantelimon, Ilfov",
+    category: "Comercial",
+    description: "Asfaltare parcare la CORA Pantelimon. Lucrare de mare anvergură pentru un spațiu comercial cu suprafață mare de parcare. Am executat pregătirea terenului, structura rutieră și stratul de uzură asfaltic, asigurând durabilitate și rezistență la trafic intens.",
+    image: "https://www.constructii-instalatii.ro/wp-content/uploads/2018/04/Asfaltare-Parcare-la-CORA-Pantelimon-3.jpg",
   },
-  "dream-residence": {
-    name: "Dream Residence",
+  "asfaltare-parcare-romexpo": {
+    name: "Asfaltare Parcare și Plombare Gropi — ROMEXPO",
     area: "București",
-    category: "Construcții Civile",
-    description: "Dream Residence reprezintă un proiect de construcții civile în București, cu accent pe calitatea lucrărilor și atenția la detalii. Complexul rezidențial oferă spații moderne de locuit, construite cu materiale premium și execuție la cele mai înalte standarde.",
-    image: "/edil/dream-residence.jpg",
-  },
-  "confort-urban": {
-    name: "Confort Urban",
-    area: "București",
-    category: "Construcții Civile",
-    description: "Confort Urban este un proiect de construcții civile în București. Proiectul a fost realizat cu accent pe confortul locatarilor, folosind materiale de calitate și soluții moderne de construcție. Structura asigură durabilitate și siguranță în timp.",
-    image: "/edil/confort-urban.png",
-  },
-  "central-address-residence": {
-    name: "Central Address Residence",
-    area: "București",
-    category: "Construcții Civile",
-    description: "Central Address Residence este un proiect de construcții civile în zona centrală a Bucureștiului. Complexul combină arhitectură modernă cu materiale premium, oferind spații rezidențiale de lux. Echipa ACTUAL DAVID Construct a executat lucrările cu profesionalism și respect pentru termene.",
-    image: "/edil/central-address.jpg",
-  },
-  "envogue-residence": {
-    name: "Envogue Residence",
-    area: "București",
-    category: "Construcții Civile",
-    description: "Envogue Residence este un proiect de construcții civile în București, caracterizat prin design modern și finisaje premium. Complexul rezidențial reflectă experiența de peste 20 de ani a echipei ACTUAL DAVID Construct în realizarea proiectelor complexe.",
-    image: "/edil/envogue.jpg",
+    category: "Comercial",
+    description: "Asfaltare parcare și plombare gropi la ROMEXPO. Lucrare de reparații și reabilitare a infrastructurii de parcare. Am executat plombarea gropilor existente și reasfaltarea suprafețelor afectate, restaurând funcționalitatea parcării pentru evenimente de mare anvergură.",
+    image: "https://www.constructii-instalatii.ro/wp-content/uploads/2015/12/Asfaltare-Parcare-si-Plombare-Gropi-la-ROMEXPO-5.jpg",
   },
 };
 
@@ -121,7 +100,7 @@ export default function ProjectDetailPage() {
                 href="/contact"
                 className="inline-flex items-center gap-2 px-8 py-4 bg-gold text-ink font-semibold rounded-lg hover:bg-gold-light transition-colors duration-300"
               >
-                Cere o ofertă
+                Obțineți o cotație
               </Link>
             </div>
           </motion.div>

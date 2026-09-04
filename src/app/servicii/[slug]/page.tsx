@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { useParams } from "next/navigation";
-import { ArrowRight, ArrowLeft, Building2, Home, Wrench, PaintBucket, Zap, PencilRuler, Check } from "lucide-react";
+import { ArrowRight, ArrowLeft, Home, Zap, Wrench, PaintBucket, Truck, Check } from "lucide-react";
 import { brand } from "@/lib/brand";
 
 const servicesData: Record<string, {
@@ -14,111 +14,92 @@ const servicesData: Record<string, {
   features: string[];
   image: string;
 }> = {
-  "constructii-civile-industriale": {
-    icon: Building2,
-    title: "Construcții Civile / Industriale",
-    hero: "Construcții Civile",
-    description: "ACTUAL DAVID Construct oferă servicii din domeniul construcțiilor pentru apartamente, case, sedii de firme, clădiri de birouri, anexe sau orice tip de construcție. Proiectele de care ne ocupăm includ construcția, renovarea și reabilitarea clădirilor afectate de diversi factori. De 20 de ani răspundem provocărilor și datorită acestora devenim tot mai buni, ținem pasul cu tehnologia, cu trend-urile în construcții și învățăm continuu. Adaptăm fiecare proiect în funcție de nevoi, dorințe și buget. Calitatea lucrărilor este asigurată de materialele și echipamentele de top utilizate, atât pentru construcțiile civile, cât și pentru cele industriale. Avem personal calificat, investim în dezvoltarea lor profesională, ne asigurăm că avem cei mai buni specialiști care să răspundă solicitărilor beneficiarilor noștri, indiferent de tipul lucrării.",
-    features: [
-      "Construcții apartamente, case, sedii firme, clădiri birouri",
-      "Construcții anexe și orice tip de construcție",
-      "Renovare și reabilitare clădiri afectate",
-      "Materiale și echipamente de top",
-      "Personal calificat cu dezvoltare profesională continuă",
-      "Adaptare în funcție de nevoi, dorințe și buget",
-      "Peste 20 de ani experiență în domeniu",
-    ],
-    image: "/edil/art-temple.jpg",
-  },
   "constructii-case": {
     icon: Home,
     title: "Construcții Case",
     hero: "Construcții Case",
-    description: "Fie că este vorba despre construcții de case la roșu, case la cheie, case de vacanță, cabane, case din lemn sau simple proiecte de case, compania noastră reprezintă cea mai bună soluție! Tu vii cu ideea, noi o transformăm în realitate.",
+    description: "Construim case și vile în București și Ilfov, de la fundație până la stadiul agreat cu beneficiarul: la roșu, la gri sau la cheie. Lucrăm după proiectul tău sau te ajutăm să pornești lucrarea organizat, cu ofertă clară și termene. Responsabilul tehnic cu execuția (RTE) colaborează cu noi pentru a asigura calitatea lucrării.",
     features: [
-      "Construcții case la roșu — fundație, zidărie, structură acoperiș",
-      "Construcții case la cheie — predare gata de folosire",
-      "Case de vacanță, cabane, case din lemn",
-      "Variante: BCA, cărămidă GVP sau cărămidă plină",
-      "Trasare, săpătură, armare, betonare fundații",
-      "Zidărie pereți exteriori și interiori",
-      "Structură acoperiș (căpriori, aștereală, învelitoare)",
-      "Finisaje interioare: tencuieli, glet, vopsea, gresie, faianta, parchet",
-      "Instalații sanitare, electrice și termice complete",
-      "Termosistem și tâmplărie PVC",
+      "Case parter, P+1, vile",
+      "Fundații, structură, zidărie",
+      "Planșee, acoperiș, termoizolație",
+      "Case la roșu, la gri și la cheie",
+      "Modificări și extinderi pe clădiri existente",
+      "RTE autorizați care respectă proiectul de execuție",
+      "Ofertă clară și termene asumate",
     ],
     image: "/edil/service-case.png",
   },
-  "mentenanta": {
-    icon: Wrench,
-    title: "Mentenanță",
-    hero: "Mentenanță",
-    description: "Oferim mentenanță preventivă, predictivă și corectivă a clădirilor civile și industriale. Avem echipe dedicate, coordonate de ingineri specializați. Serviciul de mentenanță are ca scop funcționarea optimă a instalațiilor clădirii prin întreținere preventivă, predictivă și corectivă. Aceste acțiuni duc la mărirea fiabilității și a performanțelor clădirii și la scăderea disfuncționalităților.",
-    features: [
-      "Mentenanță preventivă, predictivă și corectivă",
-      "Echipe disponibile 24/7, 7 zile din 7",
-      "Coordonare de ingineri specializați în mentenanță imobile",
-      "Apă-canal, tehnico-sanitare",
-      "Încălzire centrală, sistem HVAC/răcire, tratare aer",
-      "Electrice, sisteme detecție, instalații stingere incendii",
-      "Lacătușerie, vopsitorie, betonări, confecții metalice",
-      "Irigații și întreținere spații verzi",
-      "Abonamente personalizate cu interventie non-stop",
-      "Revizie anuală a tuturor instalațiilor",
-    ],
-    image: "/edil/hero.jpg",
-  },
-  "amenajari-interioare": {
-    icon: PaintBucket,
-    title: "Amenajări Interioare",
-    hero: "Amenajări Interioare",
-    description: "Amenajările interioare se referă la toate lucrările umede sau uscate care sunt localizate în interiorul unei construcții. Aplicăm soluții moderne de recompartimentare a spațiilor interioare, executăm lucrări de placare a pereților cu gips-carton, izolații termice, fonice, placări gresie și faianță, vopsitorie, zugrăveli decorative, instalații termice și sanitare, lucrări de tâmplărie și multe altele.",
-    features: [
-      "Zugrăveli, tencuieli, vopsea lavabilă",
-      "Turnare sape, izolații, gleturi",
-      "Placări faianță, gresie, marmură",
-      "Izolație termosistem, hidroizolații, rigips",
-      "Montaj parchet, pardoseli, lambriu",
-      "Instalații electrice (spoturi, prize, tablou electric)",
-      "Instalații sanitare (proiectare și montare)",
-      "Montaj tâmplărie PVC cu geam termopan",
-      "Montaj dale, beton amprentat sau pavele",
-      "Amenajări exterioare: termosistem, vopsitorii, tencuieli",
-    ],
-    image: "/edil/service-amenajari.png",
-  },
-  "instalatii-electrice-sanitare": {
+  "instalatii-electrice": {
     icon: Zap,
-    title: "Instalații Electrice și Sanitare",
+    title: "Instalații Electrice",
     hero: "Instalații Electrice",
-    description: "Proiectăm și executăm instalații electrice și sanitare cu personal calificat. Firma noastră de construcții dispune de specialiști în domeniul instalațiilor electrice care pot proiecta și executa proiecte de instalații electrice. Echipa noastră este formată din electricieni cu experiență care folosesc materiale de calitate pentru toate tipurile de instalații.",
+    description: "Executăm instalații electrice pentru case, vile, apartamente, birouri și spații comerciale. Lucrăm la clădiri noi și la instalații existente: proiectare de execuție, montaj, refacere și punere în funcțiune, împreună cu electricieni autorizați.",
     features: [
-      "Instalații electrice interioare și exterioare",
-      "Instalații electrice case, apartamente, blocuri",
-      "Instalații electrice sedii firme, instituții publice",
-      "Instalații electrice industriale",
-      "Proiectare instalații electrice (case, blocuri, complexe)",
-      "Materiale de la mărci cunoscute — standarde ridicate",
-      "Instalații sanitare — proiectare și execuție",
-      "Durată de exploatare îndelungată garantată",
+      "Instalații electrice pentru case noi",
+      "Refacere și modernizare instalație existentă",
+      "Tablouri electrice",
+      "Prize, întrerupătoare, doze, circuite",
+      "Iluminat interior și exterior",
+      "Circuite dedicate pentru climatizare, electrocasnice sau atelier",
+      "Instalații electrice pentru spații nerezidențiale",
+      "Verificări și remedieri la instalații existente",
+      "Personal autorizat / parteneri atestați",
     ],
     image: "/edil/service-instalatii.png",
   },
-  "proiectare": {
-    icon: PencilRuler,
-    title: "Proiectare",
-    hero: "Proiectare",
-    description: "Proiectare construcții cu destinație rezidențială, comercială sau industrială. Proiectarea reprezintă o fază foarte importantă în realizarea unei construcții, deoarece dictează siguranța în exploatare, estetica, funcționalitatea și durabilitatea, precum și costurile finale ale acesteia. Proiectarea este compusă dintr-o multitudine de piese scrise și piese desenate. Aceste piese cuprind toate specificațiile tehnice necesare, pe baza cărora se pot autoriza și executa lucrările de construire, modificare, demolare.",
+  "instalatii-sanitare": {
+    icon: Wrench,
+    title: "Instalații Sanitare",
+    hero: "Instalații Sanitare",
+    description: "Executăm instalații apă-canal, termoficare, centrale termice, stații de pompare. Oferim mentenanță preventivă și corectivă pentru clădiri civile și industriale. Utilizăm cele mai noi tehnologii în procedurile de montaj pentru instalațiile de climatizare, ventilatie, încălzire centrală, sanitare, stingere incendiu, pompe de căldură.",
     features: [
-      "Proiectare rezidențială, comercială și industrială",
-      "Arhitectură, rezistență, instalații",
-      "Piese scrise și piese desenate — documentație completă",
-      "Specificații tehnice necesare pentru autorizare",
-      "Siguranță în exploatare, estetică, funcționalitate",
-      "Echipă de ingineri specializați pe diferite segmente",
-      "Realizarea întregii documentații și a tuturor pașilor",
+      "Instalații rețele de apă și canalizare",
+      "Racorduri canal, modelarea sistemelor de alimentare cu apă",
+      "Instalații termice — montaj radiatoare, conducte, centrale termice",
+      "Centrale termice pe gaz sau pe lemne (autorizate ANRGN)",
+      "Stații de pompare — casele pompelor complete",
+      "Boilere, vase de expansiune, supape de siguranță",
+      "Automatizări în funcție de temperaturile interioară și exterioară",
+      "Pompe de circulație, pompe submersibile, hidrofoare",
+      "Stații dedurizare și filtre, panouri solare",
+      "Mentenanță preventivă, predictivă și corectivă",
     ],
-    image: "/edil/service-proiectare.png",
+    image: "/edil/service-amenajari.png",
+  },
+  "renovari-amenajari": {
+    icon: PaintBucket,
+    title: "Renovări / Amenajări",
+    hero: "Renovări și Amenajări",
+    description: "Servicii de renovări clădiri, de la consolidare structură până la finisaje. Amenajări interioare și exterioare pentru orice tip de imobil. Aplicăm soluții moderne de recompartimentare a spațiilor interioare, executăm lucrări de placare, izolații, vopsitorie, zugrăveli decorative, instalații termice și sanitare, lucrări de tâmplărie.",
+    features: [
+      "Consolidare structură și fundație",
+      "Recompartimentare spații interioare",
+      "Placare pereți cu gips-carton",
+      "Izolații termice, fonice, hidroizolații",
+      "Placări gresie, faianță, marmură",
+      "Vopsitorie, zugrăveli decorative",
+      "Montaj parchet, pardoseli, lambriu",
+      "Montaj tâmplărie PVC cu geam termopan",
+      "Amenajări exterioare: termosistem, vopsitorii, tencuieli",
+    ],
+    image: "/edil/hero.jpg",
+  },
+  "drumuri-poduri": {
+    icon: Truck,
+    title: "Drumuri și Poduri",
+    hero: "Drumuri și Poduri",
+    description: "Construcții drumuri și poduri, alei și trotuare, parcări și platforme betonate, asfaltări. Realizăm infrastructură rutieră completă, de la terasamente la stratul de uzură. Avem experiență în lucrări de mare anvergură: asfaltări parcări comerciale (CORA Pantelimon, ROMEXPO), asfaltări curți și străzi.",
+    features: [
+      "Construcții drumuri și poduri",
+      "Alei și trotuare",
+      "Parcări și platforme betonate",
+      "Asfaltări — parcări, curți, străzi",
+      "Plombare gropi și reparații asfalt",
+      "Terasamente și infrastructură rutieră",
+      "Lucrări de mare anvergură (parcări comerciale, ROMEXPO)",
+    ],
+    image: "/edil/art-temple.jpg",
   },
 };
 
@@ -205,7 +186,11 @@ export default function ServiceDetailPage() {
             <h3 className="font-display text-2xl font-bold text-cream mb-4">
               Vrei o ofertă personalizată? Apelează-ne!
             </h3>
-            <p className="text-ash mb-6"><a href="tel:0725433559" className="text-gold text-2xl font-bold">0725.433.559</a></p>
+            <p className="text-ash mb-6">
+              <a href={`tel:${brand.phone.replace(/\s/g, "")}`} className="text-gold text-2xl font-bold">{brand.phone}</a>
+              <span className="mx-2 text-stone">/</span>
+              <a href={`tel:${brand.phone2.replace(/\s/g, "")}`} className="text-gold text-2xl font-bold">{brand.phone2}</a>
+            </p>
             <Link
               href="/contact"
               className="inline-flex items-center gap-2 px-8 py-4 bg-gold text-ink font-semibold rounded-lg hover:bg-gold-light transition-colors duration-300"

@@ -3,120 +3,72 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { ArrowRight, MapPin, Building2, Home, Wrench, PaintBucket, Zap, PencilRuler, Award, ShieldCheck, Sparkles, TrendingUp, Users, Clock, Briefcase } from "lucide-react";
+import { ArrowRight, Home, Zap, Wrench, PaintBucket, Truck, Award, ShieldCheck, Sparkles, TrendingUp, Briefcase, Clock } from "lucide-react";
 import BuildingHero3D from "@/components/building-hero-3d";
 import { brand } from "@/lib/brand";
 
 // ============================================
-// SERVICII — 6 servicii ACTUAL DAVID Construct
+// SERVICII — 5 servicii CONSTRUCTII INSTALATII
 // ============================================
 const services = [
-  {
-    slug: "constructii-civile-industriale",
-    icon: Building2,
-    title: "Construcții Civile / Industriale",
-    short: "Apartamente, case, sedii firme, clădiri birouri",
-    text: "Cu peste 20 ani experiență în domeniu suntem partenerul Dvs. perfect. Construim, renovăm și reabilităm clădiri afectate de diversi factori.",
-    image: "/edil/art-temple.jpg",
-  },
   {
     slug: "constructii-case",
     icon: Home,
     title: "Construcții Case",
-    short: "Case la roșu, case la cheie, case de vacanță",
-    text: "Dacă aveți de gând să construiți o casă nu ezitați să apelați la echipa noastră de specialiști. De la fundație la cheie.",
+    short: "Case parter, P+1, vile — la roșu, la gri sau la cheie",
+    text: "Construim case și vile în București și Ilfov, de la fundație până la stadiul agreat cu beneficiarul. Lucrăm după proiectul tău sau te ajutăm să pornești lucrarea organizat.",
     image: "/edil/service-case.png",
   },
   {
-    slug: "mentenanta",
-    icon: Wrench,
-    title: "Mentenanță",
-    short: "Preventivă, predictivă și corectivă",
-    text: "Oferim mentenanță preventivă, predictivă și corectivă a clădirilor civile și industriale. Echipe disponibile 24/7.",
-    image: "/edil/hero.jpg",
-  },
-  {
-    slug: "amenajari-interioare",
-    icon: PaintBucket,
-    title: "Amenajări Interioare",
-    short: "Case, apartamente, birouri, spații comerciale",
-    text: "Amenajări interioare și exterioare pentru orice tip de imobil. Zugrăveli, tencuieli, gresie, faianta, parchet, rigips, termosistem.",
-    image: "/edil/service-amenajari.png",
-  },
-  {
-    slug: "instalatii-electrice-sanitare",
+    slug: "instalatii-electrice",
     icon: Zap,
-    title: "Instalații Electrice și Sanitare",
-    short: "Proiectare și execuție cu personal calificat",
-    text: "Proiectăm și executăm instalații electrice și sanitare cu personal calificat. Case, apartamente, blocuri, sedii firme, industriale.",
+    title: "Instalații Electrice",
+    short: "Case, vile, apartamente, birouri, spații comerciale",
+    text: "Executăm instalații electrice pentru clădiri noi și existente: proiectare de execuție, montaj, refacere și punere în funcțiune, cu electricieni autorizați.",
     image: "/edil/service-instalatii.png",
   },
   {
-    slug: "proiectare",
-    icon: PencilRuler,
-    title: "Proiectare",
-    short: "Rezidențială, comercială sau industrială",
-    text: "Proiectare construcții cu destinație rezidențială, comercială sau industrială. Arhitectură, rezistență, instalații — documentație completă.",
+    slug: "instalatii-sanitare",
+    icon: Wrench,
+    title: "Instalații Sanitare",
+    short: "Apă-canal, termoficare, centrale termice, stații pompare",
+    text: "Instalații apă-canal, termice, sanitare, centrale termice, stații de pompare. Mentenanță preventivă și corectivă pentru clădiri civile și industriale.",
+    image: "/edil/service-amenajari.png",
+  },
+  {
+    slug: "renovari-amenajari",
+    icon: PaintBucket,
+    title: "Renovări / Amenajări",
+    short: "Consolidare structură, finisaje interioare și exterioare",
+    text: "Servicii de renovări clădiri, de la consolidare structură până la finisaje. Amenajări interioare și exterioare pentru orice tip de imobil.",
+    image: "/edil/hero.jpg",
+  },
+  {
+    slug: "drumuri-poduri",
+    icon: Truck,
+    title: "Drumuri și Poduri",
+    short: "Alei, trotuare, parcari, platforme betonate, asfaltări",
+    text: "Construcții drumuri și poduri, alei și trotuare, parcări și platforme betonate, asfaltări. Infrastructură rutieră completă.",
+    image: "/edil/art-temple.jpg",
+  },
+  {
+    slug: "inchirieri-utilaje",
+    icon: Briefcase,
+    title: "Închirieri Utilaje",
+    short: "Buldo, bobcat, basculante, excavatoare, freze asfalt",
+    text: "Închiriem utilaje de construcții și oferim serviciile aferente: buldo, bobcat, basculante, cilindri compactori, freze asfalt/beton, autogreder, excavatoare.",
     image: "/edil/service-proiectare.png",
   },
 ];
 
 // ============================================
-// PROIECTE — 6 proiecte ACTUAL DAVID Construct
-// ============================================
-const projects = [
-  {
-    slug: "art-temple-residence",
-    name: "Art Temple Residence",
-    area: "București",
-    category: "Construcții Civile",
-    image: "/edil/art-temple.jpg",
-  },
-  {
-    slug: "city-lights-pipera",
-    name: "City Lights Pipera",
-    area: "Pipera, Ilfov",
-    category: "Construcții Civile",
-    image: "/edil/city-lights.jpg",
-  },
-  {
-    slug: "dream-residence",
-    name: "Dream Residence",
-    area: "București",
-    category: "Construcții Civile",
-    image: "/edil/dream-residence.jpg",
-  },
-  {
-    slug: "confort-urban",
-    name: "Confort Urban",
-    area: "București",
-    category: "Construcții Civile",
-    image: "/edil/confort-urban.png",
-  },
-  {
-    slug: "central-address-residence",
-    name: "Central Address Residence",
-    area: "București",
-    category: "Construcții Civile",
-    image: "/edil/central-address.jpg",
-  },
-  {
-    slug: "envogue-residence",
-    name: "Envogue Residence",
-    area: "București",
-    category: "Construcții Civile",
-    image: "/edil/envogue.jpg",
-  },
-];
-
-// ============================================
-// VALORI — 4 valori ACTUAL DAVID Construct
+// VALORI — 4 valori CONSTRUCTII INSTALATII
 // ============================================
 const values = [
-  { icon: ShieldCheck, title: "Durabilitate", text: "Construim cu materiale de top pentru rezistență în timp. Calitatea lucrarilor este asigurată de echipamentele utilizate." },
-  { icon: Award, title: "Siguranță", text: "Lucrăm în siguranță, respectând toate normele de protecția muncii și standardele tehnice în vigoare." },
-  { icon: Sparkles, title: "Modern", text: "Construcții moderne, tinem pasul cu tehnologia și trend-urile. Adaptăm fiecare proiect în funcție de nevoi și buget." },
-  { icon: TrendingUp, title: "Ingineri calificați", text: "Avem personal calificat, investim în dezvoltarea lor profesională. Cei mai buni specialiști pentru proiectul Dvs." },
+  { icon: ShieldCheck, title: "Garanția Calității", text: "Oferim cele mai eficiente soluții pentru toate etapele proiectului, astfel încât la finalizare să realizați o economie considerabilă fără a face rabat de la calitate." },
+  { icon: Award, title: "Experiență Bogată", text: "Companie cu 20 de ani de experiență, cu parteneriate strategice care ne ajută să vă oferim un raport calitate-pret imbatabil." },
+  { icon: Sparkles, title: "Profesioniști", text: "Echipe formate din profesioniști în domeniu. Costuri reduse pentru toată gama de lucrări, cu personal specializat și atestat." },
+  { icon: TrendingUp, title: "Creativitate", text: "Una dintre calitățile noastre este creativitatea. Profitati de ea pentru a obține soluții optimale pentru proiectul dumneavoastră." },
 ];
 
 export default function HomePage() {
@@ -160,7 +112,7 @@ export default function HomePage() {
               className="inline-flex items-center gap-2 px-5 py-2 rounded-full glass mb-8"
             >
               <span className="w-2 h-2 rounded-full bg-gold animate-pulse" />
-              <span className="text-xs tracking-[0.25em] uppercase text-gold">Peste 20 ani • 342+ proiecte • București & Ilfov</span>
+              <span className="text-xs tracking-[0.25em] uppercase text-gold">20 ani experiență • București și Ilfov</span>
             </motion.div>
 
             <motion.h1
@@ -171,7 +123,7 @@ export default function HomePage() {
             >
               <span className="gold-text">{brand.name}</span>
               <br />
-              <span className="text-cream text-3xl md:text-5xl italic font-normal">Construim soluții orientate către viitor</span>
+              <span className="text-cream text-3xl md:text-5xl italic font-normal">Construim și amenajăm spații comerciale și rezidențiale</span>
             </motion.h1>
 
             <motion.p
@@ -180,7 +132,7 @@ export default function HomePage() {
               transition={{ duration: 0.8, delay: 0.3 }}
               className="text-lg text-ash max-w-2xl mx-auto mb-10 leading-relaxed"
             >
-              Indiferent unde sau ce doriți să construiți, mobilizăm experții potriviți pentru a genera valoare și a realiza obiectivele proiectului dumneavoastră.
+              Specialisti în construcții și instalații moderne. Realizăm lucrări de mare anvergură în domeniul construcțiilor civile, industriale și rezidențiale.
             </motion.p>
 
             <motion.div
@@ -190,16 +142,16 @@ export default function HomePage() {
               className="flex flex-col sm:flex-row gap-4 justify-center items-center pointer-events-auto"
             >
               <Link
-                href="/servicii"
+                href="/portofoliu"
                 className="inline-flex items-center gap-2 px-8 py-4 glass text-gold font-semibold rounded-lg hover:border-gold/50 hover:shadow-[0_4px_30px_rgba(255,107,0,0.25)] transition-all duration-300"
               >
-                Serviciile noastre <ArrowRight size={18} />
+                Lucrări recente <ArrowRight size={18} />
               </Link>
               <Link
                 href="/contact"
                 className="inline-flex items-center gap-2 px-8 py-4 glass text-cream font-semibold rounded-lg hover:border-gold/50 hover:shadow-[0_4px_30px_rgba(255,107,0,0.25)] transition-all duration-300"
               >
-                Cere o ofertă
+                Obțineți o cotație
               </Link>
             </motion.div>
           </div>
@@ -226,13 +178,13 @@ export default function HomePage() {
             >
               <span className="text-xs tracking-[0.3em] uppercase text-gold mb-4 block">Cine suntem</span>
               <h2 className="font-display text-4xl md:text-5xl font-bold text-cream mb-6 leading-tight">
-                Construim soluții orientate către <span className="gold-text">viitor</span>
+                Construim <span className="gold-text">viitorul</span> cu experiență și preturi accesibile
               </h2>
               <p className="text-lg text-ash leading-relaxed mb-6">
-                Cu o experiență de peste 20 de ani în domeniul construcțiilor, realizăm proiecte complexe și oferim soluții moderne clienților noștri. Seriozitatea și punctualitatea ne recomandă în a fi cel mai bun partener pentru execuția proiectelor Dvs.
+                Societatea noastră activează cu succes pe piața lucrărilor de construcții-montaj, realizând lucrări de mare anvergură în domeniul construcțiilor civile, industriale și rezidențiale, precum și al construcțiilor de drumuri, poduri și restaurărilor clădirilor istorice.
               </p>
               <ul className="grid grid-cols-2 gap-3 mb-8">
-                {["Construcții civile și industriale", "Construcții case", "Structuri", "Proiectare", "Instalații electrice / sanitare", "Amenajări interioare"].map((item, i) => (
+                {["Construcții case și vile", "Instalații electrice", "Instalații sanitare", "Renovări și amenajări", "Drumuri și poduri", "Închirieri utilaje"].map((item, i) => (
                   <li key={i} className="flex items-center gap-2 text-sm text-ash">
                     <span className="w-1.5 h-1.5 rounded-full bg-gold" /> {item}
                   </li>
@@ -254,7 +206,7 @@ export default function HomePage() {
               <div className="rounded-2xl overflow-hidden glass">
                 <img
                   src="/edil/about.png"
-                  alt="ACTUAL DAVID Construct"
+                  alt={brand.name}
                   className="w-full h-[400px] object-cover"
                 />
               </div>
@@ -274,10 +226,10 @@ export default function HomePage() {
         <div className="max-w-5xl mx-auto">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {[
-              { icon: Briefcase, value: "342+", label: "Proiecte realizate" },
-              { icon: Users, value: "270+", label: "Clienți mulțumiți" },
-              { icon: Award, value: "52+", label: "Ingineri calificați" },
-              { icon: Clock, value: "20+", label: "Ani experiență" },
+              { icon: Home, value: "20+", label: "Ani experiență" },
+              { icon: Briefcase, value: "100+", label: "Lucrări realizate" },
+              { icon: Award, value: "ISO", label: "Certificare calitate" },
+              { icon: Clock, value: "24/7", label: "Disponibilitate echipe" },
             ].map((stat, i) => (
               <motion.div
                 key={i}
@@ -374,7 +326,7 @@ export default function HomePage() {
                   style={{ willChange: "transform, opacity" }}
                 >
                   <Link
-                    href={`/servicii/${srv.slug}`}
+                    href={srv.slug === "inchirieri-utilaje" ? "/inchirieri-utilaje" : `/servicii/${srv.slug}`}
                     className="group block glass rounded-2xl overflow-hidden hover:border-gold/30 transition-all duration-500 h-full"
                   >
                     <div className="relative h-48 overflow-hidden bg-ink/50 flex items-center justify-center">
@@ -406,76 +358,9 @@ export default function HomePage() {
       </section>
 
       {/* ============================================ */}
-      {/* PROIECTE */}
-      {/* ============================================ */}
-      <section className="py-24 px-6 bg-canvas">
-        <div className="max-w-7xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.6, ease: [0.25, 0.4, 0.25, 1] }}
-            className="text-center mb-16"
-          >
-            <span className="text-xs tracking-[0.3em] uppercase text-gold mb-4 block">Portofoliu</span>
-            <h2 className="font-display text-4xl md:text-5xl font-bold text-cream mb-4">Proiectele noastre</h2>
-            <p className="text-ash max-w-2xl mx-auto">
-              Câteva dintre proiectele noastre ne recomandă.
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {projects.map((p, i) => {
-              const animations = [
-                { initial: { opacity: 0, x: -40 }, animate: { opacity: 1, x: 0 } },
-                { initial: { opacity: 0, scale: 0.9 }, animate: { opacity: 1, scale: 1 } },
-                { initial: { opacity: 0, x: 40 }, animate: { opacity: 1, x: 0 } },
-              ];
-              const anim = animations[i % 3];
-              return (
-                <motion.div
-                  key={p.slug}
-                  initial={anim.initial}
-                  whileInView={anim.animate}
-                  viewport={{ once: true, margin: "-50px" }}
-                  transition={{ duration: 0.6, delay: (i % 3) * 0.1, ease: [0.25, 0.4, 0.25, 1] }}
-                  style={{ willChange: "transform, opacity" }}
-                >
-                  <Link
-                    href={`/portofoliu/${p.slug}`}
-                    className="group block glass rounded-2xl overflow-hidden hover:border-gold/30 transition-all duration-500 h-full"
-                  >
-                    <div className="relative h-64 overflow-hidden">
-                      <img
-                        src={p.image}
-                        alt={p.name}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-ink/90 to-transparent" />
-                      <div className="absolute top-4 right-4">
-                        <span className="px-3 py-1 rounded-full text-xs font-semibold bg-gold/20 text-gold">
-                          {p.category}
-                        </span>
-                      </div>
-                      <div className="absolute bottom-4 left-4 right-4">
-                        <h3 className="font-display text-lg font-bold text-cream leading-tight">{p.name}</h3>
-                        <p className="text-xs text-gold tracking-wide mt-1 flex items-center gap-1">
-                          <MapPin size={12} /> {p.area}
-                        </p>
-                      </div>
-                    </div>
-                  </Link>
-                </motion.div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* ============================================ */}
       {/* CTA */}
       {/* ============================================ */}
-      <section className="py-32 px-6 bg-surface">
+      <section className="py-32 px-6 bg-canvas">
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
@@ -485,16 +370,16 @@ export default function HomePage() {
           className="max-w-3xl mx-auto text-center"
         >
           <h2 className="font-display text-4xl md:text-5xl font-bold text-cream mb-6">
-            Ai un proiect de realizat? <span className="gold-text">Cere o ofertă!</span>
+            Construim <span className="gold-text">viitorul</span> împreună
           </h2>
           <p className="text-lg text-ash mb-10">
-            Află mai multe despre noi sau cere o ofertă personalizată pentru viitorul tău proiect. Lăsă-ne datele și te contactăm!
+            Aveți un proiect de realizat? Solicitați o cotație de preț și vă răspundem în cel mai scurt timp.
           </p>
           <Link
             href="/contact"
             className="inline-flex items-center gap-2 px-10 py-5 bg-gold text-ink font-semibold rounded-lg hover:bg-gold-light transition-colors duration-300 text-lg"
           >
-            Cere o ofertă <ArrowRight size={20} />
+            Obțineți o cotație <ArrowRight size={20} />
           </Link>
         </motion.div>
       </section>

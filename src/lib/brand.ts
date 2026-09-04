@@ -1,17 +1,24 @@
 // ============================================
-// BRAND CONFIG — ACTUAL DAVID Construct
+// BRAND CONFIG — CONSTRUCTII INSTALATII
+// (ASFALTERRA BETA CONSTRUCT)
 // ============================================
 
 export const brand = {
-  name: "ACTUAL DAVID Construct",
-  tagline: "Construcții București și Ilfov",
+  name: "CONSTRUCTII INSTALATII",
+  legalName: "ASFALTERRA BETA CONSTRUCT",
+  tagline: "Construcții și Instalații București și Ilfov",
   description:
-    "Cu o experiență de peste 20 de ani în domeniul construcțiilor, realizăm proiecte complexe și oferim soluții moderne clienților noștri. Seriozitatea și punctualitatea ne recomandă în a fi cel mai bun partener pentru executia proiectelor Dvs.",
-  phone: "0725.433.559",
-  email: "office@actualdavidconstruct.ro",
-  address: "Domnești, județul Ilfov",
-  website: "actualdavidconstruct.ro",
-  program: "Luni - Vineri: 09:00 - 18:00",
-  founded: "2002",
-  company: "ACTUAL DAVID Construct",
+    "Societatea noastră realizează lucrări de mare anvergură în domeniul construcțiilor civile, industriale și rezidențiale, precum și al construcțiilor de drumuri, poduri și restaurărilor clădirilor istorice. Companie cu 20 de ani de experiență.",
+  phone: "0737 230 230",
+  phone2: "0734 404 404",
+  email: "contact@constructii-instalatii.ro",
+  address: "Str. Principală nr. 35, Tămădău Mare, Jud. Călărași, 917256",
+  workArea: "București și Ilfov",
+  website: "constructii-instalatii.ro",
+  program: "Zilnic, 08:00 – 18:00",
+  founded: "2005",
+  experience: "20 ani",
+  social: {
+    facebook: "https://www.facebook.com/constructii.instalatii.92",
+  },
 } as const;

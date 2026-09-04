@@ -2,21 +2,21 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { ArrowRight, Users, Briefcase, Award, Clock, ShieldCheck, Sparkles, TrendingUp } from "lucide-react";
+import { ArrowRight, Award, ShieldCheck, Sparkles, TrendingUp, Home, Briefcase, Clock } from "lucide-react";
 import { brand } from "@/lib/brand";
 
 const values = [
-  { icon: ShieldCheck, title: "Durabilitate", text: "Construim cu materiale de top pentru rezistență în timp. Calitatea lucrarilor este asigurată de echipamentele utilizate." },
-  { icon: Award, title: "Siguranță", text: "Lucrăm în siguranță, respectând toate normele de protecția muncii și standardele tehnice în vigoare." },
-  { icon: Sparkles, title: "Modern", text: "Construcții moderne, tinem pasul cu tehnologia și trend-urile. Adaptăm fiecare proiect în funcție de nevoi și buget." },
-  { icon: TrendingUp, title: "Ingineri calificați", text: "Avem personal calificat, investim în dezvoltarea lor profesională. Cei mai buni specialiști pentru proiectul Dvs." },
+  { icon: ShieldCheck, title: "Garanția Calității", text: "Oferim cele mai eficiente soluții pentru toate etapele proiectului, astfel încât la finalizare să realizați o economie considerabilă fără a face rabat de la calitate." },
+  { icon: Award, title: "Experiență Bogată", text: "Companie cu 20 de ani de experiență, cu parteneriate strategice care ne ajută să vă oferim un raport calitate-pret imbatabil." },
+  { icon: Sparkles, title: "Profesioniști", text: "Echipe formate din profesioniști în domeniu. Costuri reduse pentru toată gama de lucrări, cu personal specializat și atestat." },
+  { icon: TrendingUp, title: "Creativitate", text: "Una dintre calitățile noastre este creativitatea. Profitati de ea pentru a obține soluții optimale pentru proiectul dumneavoastră." },
 ];
 
 const stats = [
-  { icon: Briefcase, value: "342+", label: "Proiecte realizate" },
-  { icon: Users, value: "270+", label: "Clienți mulțumiți" },
-  { icon: Award, value: "52+", label: "Ingineri calificați" },
-  { icon: Clock, value: "20+", label: "Ani experiență" },
+  { icon: Home, value: "20+", label: "Ani experiență" },
+  { icon: Briefcase, value: "100+", label: "Lucrări realizate" },
+  { icon: Award, value: "ISO", label: "Certificare calitate" },
+  { icon: Clock, value: "24/7", label: "Disponibilitate echipe" },
 ];
 
 export default function AboutPage() {
@@ -25,7 +25,7 @@ export default function AboutPage() {
       {/* Hero */}
       <section className="relative h-[50vh] min-h-[400px] overflow-hidden">
         <div className="absolute inset-0">
-          <img src="/edil/about.png" alt="ACTUAL DAVID Construct" className="w-full h-full object-cover" />
+          <img src="/edil/about.png" alt={brand.name} className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-ink/70" />
         </div>
         <div className="relative z-10 h-full flex items-center justify-center px-6">
@@ -37,7 +37,7 @@ export default function AboutPage() {
           >
             <span className="text-xs tracking-[0.3em] uppercase text-gold mb-4 block">Despre Noi</span>
             <h1 className="font-display text-4xl md:text-6xl font-bold text-cream mb-4">
-              Construim soluții orientate către <span className="gold-text">viitor</span>
+              Constructori cu <span className="gold-text">experiență</span>
             </h1>
           </motion.div>
         </div>
@@ -56,13 +56,16 @@ export default function AboutPage() {
             >
               <span className="text-xs tracking-[0.3em] uppercase text-gold mb-4 block">Cine suntem</span>
               <h2 className="font-display text-4xl md:text-5xl font-bold text-cream mb-6 leading-tight">
-                Realizăm proiecte <span className="gold-text">moderne</span>
+                Construcții și Instalații <span className="gold-text">București și România</span>
               </h2>
               <p className="text-lg text-ash leading-relaxed mb-6">
-                Cu o experiență de peste 20 de ani în domeniul construcțiilor, realizăm proiecte complexe și oferim soluții moderne clienților noștri. Seriozitatea și punctualitatea ne recomandă în a fi cel mai bun partener pentru execuția proiectelor Dvs.
+                Societatea noastră realizează lucrări de mare anvergură în domeniul construcțiilor civile, industriale și rezidențiale, precum și al construcțiilor de drumuri, poduri și restaurărilor clădirilor istorice.
+              </p>
+              <p className="text-lg text-ash leading-relaxed mb-6">
+                Suntem mândri de calitatea serviciilor oferite clienților, avem echipe formate din profesioniști în domeniu. Pe parcursul celor 20 de ani de experiență am realizat o serie de parteneriate strategice care ne ajută să vă putem oferi un raport calitate-pret imbatabil.
               </p>
               <ul className="grid grid-cols-2 gap-3 mb-8">
-                {["Construcții civile și industriale", "Construcții case", "Structuri", "Proiectare", "Instalații electrice / sanitare", "Amenajări interioare"].map((item, i) => (
+                {["Construcții case și vile", "Instalații electrice", "Instalații sanitare", "Renovări și amenajări", "Drumuri și poduri", "Închirieri utilaje"].map((item, i) => (
                   <li key={i} className="flex items-center gap-2 text-sm text-ash">
                     <span className="w-1.5 h-1.5 rounded-full bg-gold" /> {item}
                   </li>
@@ -81,7 +84,7 @@ export default function AboutPage() {
               <div className="rounded-2xl overflow-hidden glass">
                 <img
                   src="/edil/about.png"
-                  alt="ACTUAL DAVID Construct"
+                  alt={brand.name}
                   className="w-full h-[400px] object-cover"
                 />
               </div>
@@ -169,16 +172,16 @@ export default function AboutPage() {
           className="max-w-3xl mx-auto text-center"
         >
           <h2 className="font-display text-4xl md:text-5xl font-bold text-cream mb-6">
-            Ai un proiect de realizat? <span className="gold-text">Cere o ofertă!</span>
+            Aveți un proiect de realizat? <span className="gold-text">Solicitați o cotație!</span>
           </h2>
           <p className="text-lg text-ash mb-10">
-            Află mai multe despre noi sau cere o ofertă personalizată pentru viitorul tău proiect.
+            Completați formularul de contact sau sunați la numărul de telefon afișat și veți primi o ofertă din partea echipei noastre.
           </p>
           <Link
             href="/contact"
             className="inline-flex items-center gap-2 px-10 py-5 bg-gold text-ink font-semibold rounded-lg hover:bg-gold-light transition-colors duration-300 text-lg"
           >
-            Cere o ofertă <ArrowRight size={20} />
+            Obțineți o cotație <ArrowRight size={20} />
           </Link>
         </motion.div>
       </section>

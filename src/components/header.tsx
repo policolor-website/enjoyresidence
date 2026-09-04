@@ -8,10 +8,11 @@ import { brand } from "@/lib/brand";
 
 const navItems = [
   { href: "/", label: "Acasă" },
-  { href: "/despre-noi", label: "Despre Noi" },
+  { href: "/despre-noi", label: "Despre" },
   { href: "/servicii", label: "Servicii" },
+  { href: "/inchirieri-utilaje", label: "Închirieri Utilaje" },
   { href: "/portofoliu", label: "Portofoliu" },
-  { href: "/contact", label: "Contact" },
+  { href: "/contact", label: "Obțineți o Cotație" },
 ];
 
 export default function Header() {

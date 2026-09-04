@@ -167,13 +167,13 @@ export default function BuildingHero3D() {
     const dracoLoader = new DRACOLoader();
     dracoLoader.setDecoderPath("https://www.gstatic.com/draco/v1/decoders/");
     loader.setDRACOLoader(dracoLoader);
-    console.log("%cLoading sehir.glb (15MB Draco — city+street)...", "color: #d4a050;");
+    console.log("%cLoading royal-house.glb (2.4MB Draco — 931 pieces)...", "color: #d4a050;");
     loader.load(
-      "/sehir.glb",
+      "/royal-house.glb",
       (gltf) => {
-        console.log("%csehir.glb loaded successfully!", "color: #00ff00; font-weight: bold;");
+        console.log("%croyal-house.glb loaded successfully!", "color: #00ff00; font-weight: bold;");
         buildingModel = gltf.scene;
-        // Model is already Y-up from Blender export — no rotation needed
+        // Model already Y-up (rotation baked in Blender) — no rotation needed
 
         const box = new THREE.Box3().setFromObject(buildingModel);
         const size = box.getSize(new THREE.Vector3());
@@ -272,12 +272,12 @@ export default function BuildingHero3D() {
         if (xhr.lengthComputable) {
           const pct = Math.round((xhr.loaded / xhr.total) * 100);
           if (pct % 25 === 0) {
-            console.log(`%cLoading building.glb: ${pct}%`, "color: #d4a050;");
+            console.log(`%cLoading royal-house.glb: ${pct}%`, "color: #d4a050;");
           }
         }
       },
       (error) => {
-        console.error("Error loading building.glb:", error);
+        console.error("Error loading royal-house.glb:", error);
       }
     );
 

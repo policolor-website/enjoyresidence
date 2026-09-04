@@ -2,49 +2,49 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { ArrowRight, Building2, Home, Wrench, PaintBucket, Zap, PencilRuler } from "lucide-react";
+import { ArrowRight, Home, Zap, Wrench, PaintBucket, Truck } from "lucide-react";
 
 const services = [
-  {
-    slug: "constructii-civile-industriale",
-    icon: Building2,
-    title: "Construcții Civile / Industriale",
-    text: "Cu peste 20 ani experiență în domeniu suntem partenerul Dvs. perfect. Construim, renovăm și reabilităm clădiri afectate de diversi factori.",
-    image: "/edil/art-temple.jpg",
-  },
   {
     slug: "constructii-case",
     icon: Home,
     title: "Construcții Case",
-    text: "Dacă aveți de gând să construiți o casă nu ezitați să apelați la echipa noastră de specialiști. De la fundație la cheie.",
+    text: "Construim case și vile în București și Ilfov, de la fundație până la stadiul agreat: la roșu, la gri sau la cheie. Lucrăm după proiectul tău sau te ajutăm să pornești lucrarea organizat.",
     image: "/edil/service-case.png",
   },
   {
-    slug: "mentenanta",
-    icon: Wrench,
-    title: "Mentenanță",
-    text: "Oferim mentenanță preventivă, predictivă și corectivă a clădirilor civile și industriale. Echipe disponibile 24/7.",
-    image: "/edil/hero.jpg",
-  },
-  {
-    slug: "amenajari-interioare",
-    icon: PaintBucket,
-    title: "Amenajări Interioare",
-    text: "Amenajări interioare și exterioare pentru orice tip de imobil. Zugrăveli, tencuieli, gresie, faianta, parchet, rigips, termosistem.",
-    image: "/edil/service-amenajari.png",
-  },
-  {
-    slug: "instalatii-electrice-sanitare",
+    slug: "instalatii-electrice",
     icon: Zap,
-    title: "Instalații Electrice și Sanitare",
-    text: "Proiectăm și executăm instalații electrice și sanitare cu personal calificat. Case, apartamente, blocuri, sedii firme, industriale.",
+    title: "Instalații Electrice",
+    text: "Executăm instalații electrice pentru case, vile, apartamente, birouri și spații comerciale. Proiectare, montaj, refacere și punere în funcțiune, cu electricieni autorizați.",
     image: "/edil/service-instalatii.png",
   },
   {
-    slug: "proiectare",
-    icon: PencilRuler,
-    title: "Proiectare",
-    text: "Proiectare construcții cu destinație rezidențială, comercială sau industrială. Arhitectură, rezistență, instalații — documentație completă.",
+    slug: "instalatii-sanitare",
+    icon: Wrench,
+    title: "Instalații Sanitare",
+    text: "Instalații apă-canal, termoficare, centrale termice, stații de pompare. Mentenanță preventivă și corectivă pentru clădiri civile și industriale.",
+    image: "/edil/service-amenajari.png",
+  },
+  {
+    slug: "renovari-amenajari",
+    icon: PaintBucket,
+    title: "Renovări / Amenajări",
+    text: "Servicii de renovări clădiri, de la consolidare structură până la finisaje. Amenajări interioare și exterioare pentru orice tip de imobil.",
+    image: "/edil/hero.jpg",
+  },
+  {
+    slug: "drumuri-poduri",
+    icon: Truck,
+    title: "Drumuri și Poduri",
+    text: "Construcții drumuri și poduri, alei și trotuare, parcări și platforme betonate, asfaltări. Infrastructură rutieră completă.",
+    image: "/edil/art-temple.jpg",
+  },
+  {
+    slug: "inchirieri-utilaje",
+    icon: ArrowRight,
+    title: "Închirieri Utilaje",
+    text: "Închiriem utilaje de construcții și oferim serviciile aferente: buldo, bobcat, basculante, cilindri compactori, freze asfalt/beton, autogreder, excavatoare.",
     image: "/edil/service-proiectare.png",
   },
 ];
@@ -63,7 +63,7 @@ export default function ServicesPage() {
             <span className="text-xs tracking-[0.3em] uppercase text-gold mb-4 block">Ce facem</span>
             <h1 className="font-display text-4xl md:text-6xl font-bold text-cream mb-6">Serviciile noastre</h1>
             <p className="text-lg text-ash max-w-2xl mx-auto">
-              Suntem orientați spre a găsi cele mai bune soluții pentru clienții noștri, oferind o gamă largă de servicii. Seriozitate și punctualitate.
+              Servicii complete de construcții, instalații, amenajări, finisaje. Suntem orientați spre a găsi cele mai bune soluții pentru clienții noștri.
             </p>
           </motion.div>
 
@@ -75,6 +75,7 @@ export default function ServicesPage() {
                 { initial: { opacity: 0, x: 40 }, animate: { opacity: 1, x: 0 } },
               ];
               const anim = animations[i % 3];
+              const href = srv.slug === "inchirieri-utilaje" ? "/inchirieri-utilaje" : `/servicii/${srv.slug}`;
               return (
                 <motion.div
                   key={srv.slug}
@@ -85,7 +86,7 @@ export default function ServicesPage() {
                   style={{ willChange: "transform, opacity" }}
                 >
                   <Link
-                    href={`/servicii/${srv.slug}`}
+                    href={href}
                     className="group block glass rounded-2xl overflow-hidden hover:border-gold/30 transition-all duration-500 h-full"
                   >
                     <div className="relative h-48 overflow-hidden bg-ink/50">
