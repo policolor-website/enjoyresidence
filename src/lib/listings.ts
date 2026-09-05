@@ -671,7 +671,7 @@ Apartamente cu compartimentări curajoase și cu suprafețe vitrate enorme
 
 FINALIZAT - LOCUIT INTEGRAL - VANDUT`,
     image: "/enjoyresidence/images/ansamblu-299-boutique-lacul-morii.jpg",
-    gallery: ["/enjoyresidence/images/ansamblu-299-boutique-lacul-morii.jpg"],
+    gallery: ["/enjoyresidence/images/ansambluri/299-1.jpg"],
     details: { year: "2021" },
     features: [
       "Compartimentări curajoase",
@@ -738,7 +738,8 @@ Regim înălțime: P+3E+M
 FINALIZAT - VANDUT - LOCUIT INTEGRAL`,
     image: "/enjoyresidence/images/ansamblu-296-p3m-lacul-morii.jpg",
     gallery: [
-      "/enjoyresidence/images/ansamblu-296-p3m-lacul-morii.jpg",
+      "/enjoyresidence/images/ansambluri/296-1.jpg",
+      "/enjoyresidence/images/ansambluri/296-2.jpg",
     ],
     details: { height: "P+3E+M", units: "2 tronsoane", parking: "Parcare acoperit" },
   },
@@ -754,7 +755,7 @@ Drumul Taberei - Metrou Raul Doamnei
 
 FINALIZAT - VANDUT INTEGRAL - LOCUIT`,
     image: "/enjoyresidence/images/ansamblu-295-drumul-taberei-raul-doamnei.jpg",
-    gallery: ["/enjoyresidence/images/ansamblu-295-drumul-taberei-raul-doamnei.jpg"],
+    gallery: ["/enjoyresidence/images/ansambluri/295-1.jpg"],
     features: [
       "Imobil tip vilă",
       "Un apartament pe etaj",
@@ -776,7 +777,7 @@ Finisaje PREMIUM + locuri de parcare subterane BONUS
 
 FINALIZAT - VANDUT INTEGRAL - LOCUIT INTEGRAL`,
     image: "/enjoyresidence/images/ansamblu-294-ion-mihalache-podul-constanta.jpg",
-    gallery: ["/enjoyresidence/images/ansamblu-294-ion-mihalache-podul-constanta.jpg"],
+    gallery: ["/enjoyresidence/images/ansambluri/294-1.jpg"],
     features: [
       "Imobil PREMIUM",
       "Cochet și intim",
@@ -801,7 +802,8 @@ Regim înălțime: P+2E
 FINALIZAT - VANDUT - LOCUIT INTEGRAL`,
     image: "/enjoyresidence/images/ansamblu-293-ghencea-valea-oltului.jpg",
     gallery: [
-      "/enjoyresidence/images/ansamblu-293-ghencea-valea-oltului.jpg",
+      "/enjoyresidence/images/ansambluri/293-1.jpg",
+      "/enjoyresidence/images/ansambluri/293-2.jpg",
     ],
     details: { height: "P+2E", units: "2 blocuri", parking: "Parcare pentru toate unitățile" },
     features: [

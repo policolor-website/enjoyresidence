@@ -4,7 +4,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { useParams } from "next/navigation";
-import { ArrowLeft, ArrowRight, MapPin, Building2, Check, Phone, Mail, ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowLeft, ArrowRight, MapPin, Building2, Check, Phone, Mail, ChevronLeft, ChevronRight, X } from "lucide-react";
 import { brand } from "@/lib/brand";
 import { ansambluri } from "@/lib/listings";
 
@@ -12,7 +12,7 @@ export default function ProjectDetailPage() {
   const params = useParams();
   const idParam = params.slug as string;
   const project = ansambluri.find(a => String(a.id) === idParam);
-  const [currentImage, setCurrentImage] = useState(0);
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
   if (!project) {
     return (
@@ -26,19 +26,22 @@ export default function ProjectDetailPage() {
   }
 
   const isVandut = project.status.includes("VANDUT");
-  const isPartial = project.status.includes("50%");
   const gallery = project.gallery.length > 0 ? project.gallery : [project.image];
 
-  const nextImage = () => setCurrentImage((prev) => (prev + 1) % gallery.length);
-  const prevImage = () => setCurrentImage((prev) => (prev - 1 + gallery.length) % gallery.length);
+  const openLightbox = (idx: number) => setLightboxIndex(idx);
+  const closeLightbox = () => setLightboxIndex(null);
+  const nextLightbox = () => setLightboxIndex((prev) => prev !== null ? (prev + 1) % gallery.length : null);
+  const prevLightbox = () => setLightboxIndex((prev) => prev !== null ? (prev - 1 + gallery.length) % gallery.length : null);
 
   return (
     <main className="pt-20">
-      {/* Hero cu galerie */}
-      <section className="relative h-[60vh] min-h-[400px] overflow-hidden">
+      {/* ============================================ */}
+      {/* HEADER — o singură imagine */}
+      {/* ============================================ */}
+      <section className="relative h-[50vh] min-h-[350px] overflow-hidden">
         <div className="absolute inset-0">
-          <img src={gallery[currentImage]} alt={project.name} className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-ink/60" />
+          <img src={project.image} alt={project.name} className="w-full h-full object-cover" />
+          <div className="absolute inset-0 bg-ink/70" />
         </div>
         <div className="relative z-10 h-full flex items-center justify-center px-6">
           <motion.div
@@ -57,57 +60,11 @@ export default function ProjectDetailPage() {
             </p>
           </motion.div>
         </div>
-
-        {/* Navigare galerie */}
-        {gallery.length > 1 && (
-          <>
-            <button
-              onClick={prevImage}
-              className="absolute left-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full glass flex items-center justify-center text-gold hover:bg-gold/20 transition-all"
-              aria-label="Imaginea anterioară"
-            >
-              <ChevronLeft size={24} />
-            </button>
-            <button
-              onClick={nextImage}
-              className="absolute right-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full glass flex items-center justify-center text-gold hover:bg-gold/20 transition-all"
-              aria-label="Imaginea următoare"
-            >
-              <ChevronRight size={24} />
-            </button>
-            {/* Thumbnail dots */}
-            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 flex gap-2">
-              {gallery.map((_, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => setCurrentImage(idx)}
-                  className={`w-2 h-2 rounded-full transition-all ${idx === currentImage ? "bg-gold w-6" : "bg-cream/40"}`}
-                  aria-label={`Imaginea ${idx + 1}`}
-                />
-              ))}
-            </div>
-          </>
-        )}
       </section>
 
-      {/* Thumbnail strip */}
-      {gallery.length > 1 && (
-        <section className="py-4 px-6 bg-ink/50 border-b border-gold/10">
-          <div className="max-w-5xl mx-auto flex gap-2 overflow-x-auto">
-            {gallery.map((img, idx) => (
-              <button
-                key={idx}
-                onClick={() => setCurrentImage(idx)}
-                className={`shrink-0 w-20 h-16 rounded-lg overflow-hidden border-2 transition-all ${idx === currentImage ? "border-gold" : "border-transparent opacity-60 hover:opacity-100"}`}
-              >
-                <img src={img} alt={`${project.name} ${idx + 1}`} className="w-full h-full object-cover" />
-              </button>
-            ))}
-          </div>
-        </section>
-      )}
-
-      {/* Conținut */}
+      {/* ============================================ */}
+      {/* CONȚINUT */}
+      {/* ============================================ */}
       <section className="py-20 px-6 bg-canvas">
         <div className="max-w-4xl mx-auto">
           <Link href="/portofoliu" className="inline-flex items-center gap-2 text-ash hover:text-gold transition-colors mb-8 text-sm">
@@ -125,11 +82,41 @@ export default function ProjectDetailPage() {
             <div className="text-ash leading-relaxed whitespace-pre-line text-base">{project.description}</div>
           </motion.div>
 
+          {/* ============================================ */}
+          {/* GALERIE FOTO — sub descriere */}
+          {/* ============================================ */}
+          {gallery.length > 0 && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="mb-12"
+            >
+              <h2 className="font-display text-2xl font-bold text-cream mb-6">Galerie foto</h2>
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+                {gallery.map((img, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => openLightbox(idx)}
+                    className="group relative aspect-[4/3] rounded-xl overflow-hidden glass hover:border-gold/40 transition-all duration-300"
+                  >
+                    <img
+                      src={img}
+                      alt={`${project.name} ${idx + 1}`}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-ink/0 group-hover:bg-ink/20 transition-colors duration-300" />
+                  </button>
+                ))}
+              </div>
+            </motion.div>
+          )}
+
           {/* Detalii ansamblu */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
             className="glass rounded-2xl p-6 mb-8"
           >
             <h3 className="font-display text-xl font-bold text-cream mb-4">Detalii ansamblu</h3>
@@ -184,7 +171,7 @@ export default function ProjectDetailPage() {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
               className="glass rounded-2xl p-6 mb-8"
             >
               <h3 className="font-display text-xl font-bold text-cream mb-4">Dotări și finisaje</h3>
@@ -203,7 +190,7 @@ export default function ProjectDetailPage() {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
               className="glass rounded-2xl p-6 mb-8"
             >
               <h3 className="font-display text-xl font-bold text-cream mb-4">Facilități zonă</h3>
@@ -279,6 +266,54 @@ export default function ProjectDetailPage() {
           </div>
         </div>
       </section>
+
+      {/* ============================================ */}
+      {/* LIGHTBOX */}
+      {/* ============================================ */}
+      {lightboxIndex !== null && (
+        <div
+          className="fixed inset-0 z-[100] bg-ink/95 flex items-center justify-center"
+          onClick={closeLightbox}
+        >
+          <button
+            onClick={closeLightbox}
+            className="absolute top-6 right-6 w-12 h-12 rounded-full glass flex items-center justify-center text-cream hover:text-gold transition-colors"
+            aria-label="Închide"
+          >
+            <X size={24} />
+          </button>
+
+          {gallery.length > 1 && (
+            <>
+              <button
+                onClick={(e) => { e.stopPropagation(); prevLightbox(); }}
+                className="absolute left-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full glass flex items-center justify-center text-gold hover:bg-gold/20 transition-all"
+                aria-label="Anterioara"
+              >
+                <ChevronLeft size={28} />
+              </button>
+              <button
+                onClick={(e) => { e.stopPropagation(); nextLightbox(); }}
+                className="absolute right-6 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full glass flex items-center justify-center text-gold hover:bg-gold/20 transition-all"
+                aria-label="Următoarea"
+              >
+                <ChevronRight size={28} />
+              </button>
+            </>
+          )}
+
+          <div className="max-w-5xl max-h-[85vh] px-16" onClick={(e) => e.stopPropagation()}>
+            <img
+              src={gallery[lightboxIndex]}
+              alt={`${project.name} ${lightboxIndex + 1}`}
+              className="max-w-full max-h-[85vh] object-contain rounded-lg"
+            />
+            <p className="text-center text-ash text-sm mt-4">
+              {lightboxIndex + 1} / {gallery.length}
+            </p>
+          </div>
+        </div>
+      )}
     </main>
   );
 }
