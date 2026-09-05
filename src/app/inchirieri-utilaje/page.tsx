@@ -56,7 +56,7 @@ export default function InchirieriUtilajePage() {
           >
             <h2 className="font-display text-3xl md:text-5xl font-bold text-cream mb-6">Utilaje disponibile</h2>
             <p className="text-lg text-ash max-w-2xl mx-auto">
-              Societatea noastră închiriază utilaje de construcții și oferă serviciile aferente acestora. Zona de lucru: București și Ilfov.
+              Societatea noastră închiriază utilaje de construcții și oferă serviciile aferente acestora. Zona de lucru: {brand.workArea}.
             </p>
           </motion.div>
 
@@ -103,8 +103,6 @@ export default function InchirieriUtilajePage() {
             </h3>
             <p className="text-ash mb-6">
               <a href={`tel:${brand.phone.replace(/\s/g, "")}`} className="text-gold text-2xl font-bold">{brand.phone}</a>
-              <span className="mx-2 text-stone">/</span>
-              <a href={`tel:${brand.phone2.replace(/\s/g, "")}`} className="text-gold text-2xl font-bold">{brand.phone2}</a>
             </p>
             <Link
               href="/contact"

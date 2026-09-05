@@ -1,6 +1,6 @@
-# CONSTRUCTII INSTALATII
+# LUCA HOME CONSTRUCT
 
-Site de prezentare pentru **ASFALTERRA BETA CONSTRUCT** (brand: CONSTRUCTII INSTALATII) — firmă de construcții și instalații cu 20 de ani experiență, zonă de lucru București și Ilfov.
+Site de prezentare pentru **LUCA HOME CONSTRUCT** — constrcții profesionale case, acoperișuri și reparații. Zonă de lucru: România și Moldova.
 
 ## Servicii
 
@@ -29,9 +29,9 @@ Modelul `public/royal-house.glb` (2.4 MB, 931 bucăți) a fost exportat din `roy
 
 ## Contact
 
-- **Telefon:** 0737 230 230 / 0734 404 404
-- **Email:** contact@constructii-instalatii.ro
-- **Sediu:** Str. Principală nr. 35, Tămădău Mare, Jud. Călărași, 917256
+- **Telefon:** +373 60 191 817
+- **Facebook:** https://www.facebook.com/Lucahomeconstruct/
+- **Zonă de lucru:** România și Moldova
 - **Program:** Zilnic, 08:00 – 18:00
 
 ## Dezvoltare

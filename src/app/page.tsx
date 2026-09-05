@@ -8,7 +8,7 @@ import BuildingHero3D from "@/components/building-hero-3d";
 import { brand } from "@/lib/brand";
 
 // ============================================
-// SERVICII — 5 servicii CONSTRUCTII INSTALATII
+// SERVICII — 5 servicii LUCA HOME CONSTRUCT
 // ============================================
 const services = [
   {
@@ -16,7 +16,7 @@ const services = [
     icon: Home,
     title: "Construcții Case",
     short: "Case parter, P+1, vile — la roșu, la gri sau la cheie",
-    text: "Construim case și vile în București și Ilfov, de la fundație până la stadiul agreat cu beneficiarul. Lucrăm după proiectul tău sau te ajutăm să pornești lucrarea organizat.",
+    text: `Construim case și vile în ${brand.workArea}, de la fundație până la stadiul agreat cu beneficiarul. Lucrăm după proiectul tău sau te ajutăm să pornești lucrarea organizat.`,
     image: "/edil/service-case.png",
   },
   {
@@ -62,11 +62,11 @@ const services = [
 ];
 
 // ============================================
-// VALORI — 4 valori CONSTRUCTII INSTALATII
+// VALORI — 4 valori LUCA HOME CONSTRUCT
 // ============================================
 const values = [
   { icon: ShieldCheck, title: "Garanția Calității", text: "Oferim cele mai eficiente soluții pentru toate etapele proiectului, astfel încât la finalizare să realizați o economie considerabilă fără a face rabat de la calitate." },
-  { icon: Award, title: "Experiență Bogată", text: "Companie cu 20 de ani de experiență, cu parteneriate strategice care ne ajută să vă oferim un raport calitate-pret imbatabil." },
+  { icon: Award, title: "Experiență Bogată", text: "Companie cu experiență în domeniu, cu parteneriate strategice care ne ajută să vă oferim un raport calitate-pret imbatabil." },
   { icon: Sparkles, title: "Profesioniști", text: "Echipe formate din profesioniști în domeniu. Costuri reduse pentru toată gama de lucrări, cu personal specializat și atestat." },
   { icon: TrendingUp, title: "Creativitate", text: "Una dintre calitățile noastre este creativitatea. Profitati de ea pentru a obține soluții optimale pentru proiectul dumneavoastră." },
 ];
@@ -112,7 +112,7 @@ export default function HomePage() {
               className="inline-flex items-center gap-2 px-5 py-2 rounded-full glass mb-8"
             >
               <span className="w-2 h-2 rounded-full bg-gold animate-pulse" />
-              <span className="text-xs tracking-[0.25em] uppercase text-gold">20 ani experiență • București și Ilfov</span>
+              <span className="text-xs tracking-[0.25em] uppercase text-gold">{brand.tagline}</span>
             </motion.div>
 
             <motion.h1

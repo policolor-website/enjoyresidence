@@ -3,13 +3,14 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowRight, Home, Zap, Wrench, PaintBucket, Truck } from "lucide-react";
+import { brand } from "@/lib/brand";
 
 const services = [
   {
     slug: "constructii-case",
     icon: Home,
     title: "Construcții Case",
-    text: "Construim case și vile în București și Ilfov, de la fundație până la stadiul agreat: la roșu, la gri sau la cheie. Lucrăm după proiectul tău sau te ajutăm să pornești lucrarea organizat.",
+    text: `Construim case și vile în ${brand.workArea}, de la fundație până la stadiul agreat: la roșu, la gri sau la cheie. Lucrăm după proiectul tău sau te ajutăm să pornești lucrarea organizat.`,
     image: "/edil/service-case.png",
   },
   {

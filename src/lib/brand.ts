@@ -1,24 +1,22 @@
 // ============================================
-// BRAND CONFIG — CONSTRUCTII INSTALATII
-// (ASFALTERRA BETA CONSTRUCT)
+// BRAND CONFIG — LUCA HOME CONSTRUCT
 // ============================================
 
 export const brand = {
-  name: "CONSTRUCTII INSTALATII",
-  legalName: "ASFALTERRA BETA CONSTRUCT",
-  tagline: "Construcții și Instalații București și Ilfov",
+  name: "LUCA HOME CONSTRUCT",
+  legalName: "LUCA HOME CONSTRUCT",
+  tagline: "Construcții profesionale Case | Acoperișuri | Reparații",
   description:
-    "Societatea noastră realizează lucrări de mare anvergură în domeniul construcțiilor civile, industriale și rezidențiale, precum și al construcțiilor de drumuri, poduri și restaurărilor clădirilor istorice. Companie cu 20 de ani de experiență.",
-  phone: "0737 230 230",
-  phone2: "0734 404 404",
-  email: "contact@constructii-instalatii.ro",
-  address: "Str. Principală nr. 35, Tămădău Mare, Jud. Călărași, 917256",
-  workArea: "București și Ilfov",
-  website: "constructii-instalatii.ro",
+    "Construcții profesionale case, acoperișuri și reparații. Lucrăm în România și Moldova, oferind soluții complete și calitate garantată pentru proiectele tale.",
+  phone: "+373 60 191 817",
+  email: "",
+  address: "",
+  workArea: "România și Moldova",
+  website: "",
   program: "Zilnic, 08:00 – 18:00",
-  founded: "2005",
-  experience: "20 ani",
+  founded: "",
+  experience: "",
   social: {
-    facebook: "https://www.facebook.com/constructii.instalatii.92",
+    facebook: "https://www.facebook.com/Lucahomeconstruct/",
   },
 } as const;

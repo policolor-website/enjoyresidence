@@ -4,11 +4,11 @@ import Footer from "@/components/footer";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "CONSTRUCTII INSTALATII | Construcții și Instalații București și Ilfov",
-  description: "Construcții civile, industriale și rezidențiale, drumuri, poduri, instalații electrice și sanitare, renovări, amenajări. 20 de ani experiență. Telefon: 0737 230 230.",
+  title: "LUCA HOME CONSTRUCT | Construcții profesionale Case, Acoperișuri, Reparații",
+  description: "Construcții profesionale case, acoperișuri și reparații în România și Moldova. Telefon: +373 60 191 817.",
   openGraph: {
-    title: "CONSTRUCTII INSTALATII | Construcții și Instalații București și Ilfov",
-    description: "Realizăm lucrări de mare anvergură în construcții civile, industriale, rezidențiale, drumuri, poduri și restaurări. Companie cu 20 de ani de experiență.",
+    title: "LUCA HOME CONSTRUCT | Construcții profesionale Case, Acoperișuri, Reparații",
+    description: "Construcții profesionale case, acoperișuri și reparații. Lucrăm în România și Moldova.",
     locale: "ro_RO",
     type: "website",
   },

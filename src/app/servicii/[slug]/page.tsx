@@ -18,7 +18,7 @@ const servicesData: Record<string, {
     icon: Home,
     title: "Construcții Case",
     hero: "Construcții Case",
-    description: "Construim case și vile în București și Ilfov, de la fundație până la stadiul agreat cu beneficiarul: la roșu, la gri sau la cheie. Lucrăm după proiectul tău sau te ajutăm să pornești lucrarea organizat, cu ofertă clară și termene. Responsabilul tehnic cu execuția (RTE) colaborează cu noi pentru a asigura calitatea lucrării.",
+    description: `Construim case și vile în ${brand.workArea}, de la fundație până la stadiul agreat cu beneficiarul: la roșu, la gri sau la cheie. Lucrăm după proiectul tău sau te ajutăm să pornești lucrarea organizat, cu ofertă clară și termene. Responsabilul tehnic cu execuția (RTE) colaborează cu noi pentru a asigura calitatea lucrării.`,
     features: [
       "Case parter, P+1, vile",
       "Fundații, structură, zidărie",
@@ -188,8 +188,6 @@ export default function ServiceDetailPage() {
             </h3>
             <p className="text-ash mb-6">
               <a href={`tel:${brand.phone.replace(/\s/g, "")}`} className="text-gold text-2xl font-bold">{brand.phone}</a>
-              <span className="mx-2 text-stone">/</span>
-              <a href={`tel:${brand.phone2.replace(/\s/g, "")}`} className="text-gold text-2xl font-bold">{brand.phone2}</a>
             </p>
             <Link
               href="/contact"

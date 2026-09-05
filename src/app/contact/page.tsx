@@ -38,9 +38,9 @@ export default function ContactPage() {
                 <div className="flex items-start gap-3 mb-3">
                   <MapPin size={18} className="text-gold mt-0.5 shrink-0" />
                   <div>
-                    <h3 className="font-display text-sm font-bold text-cream mb-1">Sediul nostru</h3>
-                    <p className="text-sm text-ash">{brand.address}</p>
-                    <p className="text-sm text-gold mt-1">Zonă de lucru: {brand.workArea}</p>
+                    <h3 className="font-display text-sm font-bold text-cream mb-1">Zonă de lucru</h3>
+                    {brand.address && <p className="text-sm text-ash">{brand.address}</p>}
+                    <p className="text-sm text-gold mt-1">{brand.workArea}</p>
                   </div>
                 </div>
               </div>
@@ -51,20 +51,21 @@ export default function ContactPage() {
                   <div>
                     <h3 className="font-display text-sm font-bold text-cream mb-1">Telefon</h3>
                     <a href={`tel:${brand.phone.replace(/\s/g, "")}`} className="text-sm text-ash hover:text-gold transition-colors block">{brand.phone}</a>
-                    <a href={`tel:${brand.phone2.replace(/\s/g, "")}`} className="text-sm text-ash hover:text-gold transition-colors block">{brand.phone2}</a>
                   </div>
                 </div>
               </div>
 
-              <div className="glass rounded-xl p-6">
-                <div className="flex items-start gap-3 mb-3">
-                  <Mail size={18} className="text-gold mt-0.5 shrink-0" />
-                  <div>
-                    <h3 className="font-display text-sm font-bold text-cream mb-1">Email</h3>
-                    <a href={`mailto:${brand.email}`} className="text-sm text-ash hover:text-gold transition-colors">{brand.email}</a>
+              {brand.email && (
+                <div className="glass rounded-xl p-6">
+                  <div className="flex items-start gap-3 mb-3">
+                    <Mail size={18} className="text-gold mt-0.5 shrink-0" />
+                    <div>
+                      <h3 className="font-display text-sm font-bold text-cream mb-1">Email</h3>
+                      <a href={`mailto:${brand.email}`} className="text-sm text-ash hover:text-gold transition-colors">{brand.email}</a>
+                    </div>
                   </div>
                 </div>
-              </div>
+              )}
 
               <div className="glass rounded-xl p-6">
                 <div className="flex items-start gap-3 mb-3">

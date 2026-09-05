@@ -16,7 +16,7 @@ export default function Footer() {
             <p className="text-sm text-ash leading-relaxed mb-6">
               {brand.description}
             </p>
-            <p className="text-xs text-stone">{brand.legalName} • {brand.experience} experiență</p>
+            <p className="text-xs text-stone">{brand.legalName}{brand.experience && ` • ${brand.experience} experiență`}</p>
           </div>
 
           {/* Servicii */}
@@ -49,21 +49,28 @@ export default function Footer() {
           <div>
             <h4 className="font-display text-lg text-gold mb-5">Contact</h4>
             <div className="space-y-4">
+              {brand.address && (
+                <div className="flex items-start gap-3">
+                  <MapPin size={16} className="text-gold mt-0.5 shrink-0" />
+                  <p className="text-sm text-ash">{brand.address}</p>
+                </div>
+              )}
               <div className="flex items-start gap-3">
                 <MapPin size={16} className="text-gold mt-0.5 shrink-0" />
-                <p className="text-sm text-ash">{brand.address}</p>
+                <p className="text-sm text-ash">{brand.workArea}</p>
               </div>
               <div className="flex items-start gap-3">
                 <Phone size={16} className="text-gold mt-0.5 shrink-0" />
                 <div className="flex flex-col">
                   <a href={`tel:${brand.phone.replace(/\s/g, "")}`} className="text-sm text-ash hover:text-gold transition-colors">{brand.phone}</a>
-                  <a href={`tel:${brand.phone2.replace(/\s/g, "")}`} className="text-sm text-ash hover:text-gold transition-colors">{brand.phone2}</a>
                 </div>
               </div>
-              <div className="flex items-start gap-3">
-                <Mail size={16} className="text-gold mt-0.5 shrink-0" />
-                <a href={`mailto:${brand.email}`} className="text-sm text-ash hover:text-gold transition-colors">{brand.email}</a>
-              </div>
+              {brand.email && (
+                <div className="flex items-start gap-3">
+                  <Mail size={16} className="text-gold mt-0.5 shrink-0" />
+                  <a href={`mailto:${brand.email}`} className="text-sm text-ash hover:text-gold transition-colors">{brand.email}</a>
+                </div>
+              )}
               <div className="flex items-start gap-3">
                 <Clock size={16} className="text-gold mt-0.5 shrink-0" />
                 <p className="text-sm text-ash">{brand.program}</p>

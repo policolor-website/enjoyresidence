@@ -7,13 +7,13 @@ import { brand } from "@/lib/brand";
 
 const values = [
   { icon: ShieldCheck, title: "Garanția Calității", text: "Oferim cele mai eficiente soluții pentru toate etapele proiectului, astfel încât la finalizare să realizați o economie considerabilă fără a face rabat de la calitate." },
-  { icon: Award, title: "Experiență Bogată", text: "Companie cu 20 de ani de experiență, cu parteneriate strategice care ne ajută să vă oferim un raport calitate-pret imbatabil." },
+  { icon: Award, title: "Experiență Bogată", text: "Companie cu experiență în domeniu, cu parteneriate strategice care ne ajută să vă oferim un raport calitate-pret imbatabil." },
   { icon: Sparkles, title: "Profesioniști", text: "Echipe formate din profesioniști în domeniu. Costuri reduse pentru toată gama de lucrări, cu personal specializat și atestat." },
   { icon: TrendingUp, title: "Creativitate", text: "Una dintre calitățile noastre este creativitatea. Profitati de ea pentru a obține soluții optimale pentru proiectul dumneavoastră." },
 ];
 
 const stats = [
-  { icon: Home, value: "20+", label: "Ani experiență" },
+  { icon: Home, value: brand.workArea, label: "Zonă de lucru" },
   { icon: Briefcase, value: "100+", label: "Lucrări realizate" },
   { icon: Award, value: "ISO", label: "Certificare calitate" },
   { icon: Clock, value: "24/7", label: "Disponibilitate echipe" },
@@ -56,13 +56,13 @@ export default function AboutPage() {
             >
               <span className="text-xs tracking-[0.3em] uppercase text-gold mb-4 block">Cine suntem</span>
               <h2 className="font-display text-4xl md:text-5xl font-bold text-cream mb-6 leading-tight">
-                Construcții și Instalații <span className="gold-text">București și România</span>
+                Construcții profesionale <span className="gold-text">{brand.workArea}</span>
               </h2>
               <p className="text-lg text-ash leading-relaxed mb-6">
                 Societatea noastră realizează lucrări de mare anvergură în domeniul construcțiilor civile, industriale și rezidențiale, precum și al construcțiilor de drumuri, poduri și restaurărilor clădirilor istorice.
               </p>
               <p className="text-lg text-ash leading-relaxed mb-6">
-                Suntem mândri de calitatea serviciilor oferite clienților, avem echipe formate din profesioniști în domeniu. Pe parcursul celor 20 de ani de experiență am realizat o serie de parteneriate strategice care ne ajută să vă putem oferi un raport calitate-pret imbatabil.
+                Suntem mândri de calitatea serviciilor oferite clienților, avem echipe formate din profesioniști în domeniu. Am realizat o serie de parteneriate strategice care ne ajută să vă putem oferi un raport calitate-pret imbatabil.
               </p>
               <ul className="grid grid-cols-2 gap-3 mb-8">
                 {["Construcții case și vile", "Instalații electrice", "Instalații sanitare", "Renovări și amenajări", "Drumuri și poduri", "Închirieri utilaje"].map((item, i) => (
