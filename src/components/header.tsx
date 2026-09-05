@@ -11,6 +11,7 @@ const navItems = [
   { href: "/servicii", label: "Vânzări" },
   { href: "/inchirieri-utilaje", label: "Închirieri" },
   { href: "/portofoliu", label: "Ansambluri" },
+  { href: "/constructii", label: "Construcții" },
   { href: "/despre-noi", label: "Despre" },
   { href: "/contact", label: "Contact" },
 ];

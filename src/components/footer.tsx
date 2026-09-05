@@ -26,6 +26,7 @@ export default function Footer() {
               <li><Link href="/servicii" className="text-sm text-ash hover:text-gold transition-colors">Vânzări imobiliare</Link></li>
               <li><Link href="/inchirieri-utilaje" className="text-sm text-ash hover:text-gold transition-colors">Închirieri</Link></li>
               <li><Link href="/portofoliu" className="text-sm text-ash hover:text-gold transition-colors">Ansambluri rezidențiale</Link></li>
+              <li><Link href="/constructii" className="text-sm text-ash hover:text-gold transition-colors">Construcții</Link></li>
               <li><Link href="/servicii" className="text-sm text-ash hover:text-gold transition-colors">Apartamente</Link></li>
               <li><Link href="/servicii" className="text-sm text-ash hover:text-gold transition-colors">Case și vile</Link></li>
               <li><Link href="/servicii" className="text-sm text-ash hover:text-gold transition-colors">Terenuri</Link></li>
@@ -40,6 +41,7 @@ export default function Footer() {
               <li><Link href="/servicii" className="text-sm text-ash hover:text-gold transition-colors">Vânzări</Link></li>
               <li><Link href="/inchirieri-utilaje" className="text-sm text-ash hover:text-gold transition-colors">Închirieri</Link></li>
               <li><Link href="/portofoliu" className="text-sm text-ash hover:text-gold transition-colors">Ansambluri</Link></li>
+              <li><Link href="/constructii" className="text-sm text-ash hover:text-gold transition-colors">Construcții</Link></li>
               <li><Link href="/despre-noi" className="text-sm text-ash hover:text-gold transition-colors">Despre noi</Link></li>
               <li><Link href="/contact" className="text-sm text-ash hover:text-gold transition-colors">Contact</Link></li>
             </ul>
