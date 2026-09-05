@@ -40,6 +40,7 @@ export interface Listing {
   landClass?: string;
   tags: string[];
   hasVideo: boolean;
+  videoUrl?: string;
   description: string;
   features: {
     utilities?: string[];
@@ -88,6 +89,7 @@ export const listings: Listing[] = [
     buildingHeight: "P+7",
     tags: ["TOP", "Exclusivitate"],
     hasVideo: true,
+    videoUrl: "https://www.youtube.com/embed/474J5qjW-fQ",
     description: "Apartament cu 3 camere ultramodern, mobilat si utilat LUX. Numai mobilierul a costat peste 50.000 euro. Posibilitate achizitionare loc de parcare. Executat cu designer de interior. Supraveghere video 24/24. Comision 0. Centrala individuala, incalzire in pardoseala, instalatii aer conditionat, SMART TV-uri, 2 bucatarii high class, obiecte sanitare premium. ParkLake Mall in apropiere, metrou Titan 9 min.",
     features: {
       utilities: ["Curent", "Apa", "Canalizare", "Gaz", "CATV", "Acces internet", "Fibra optica"],
@@ -132,6 +134,7 @@ export const listings: Listing[] = [
     buildingHeight: "P+10",
     tags: ["Exclusivitate"],
     hasVideo: true,
+    videoUrl: "https://www.youtube.com/embed/KZIcnAEzatQ",
     description: "2 Camere circular, reabilitat termic. Locatie: Titan - intre statiile de metrou Nicolae Grigorescu si Titan. Apartamentul urmeaza sa fie debarasat total pentru renovare. Super pozitie, totul la 6-7 min. Necesita renovare totala. Bloc izolat termic, scara intretinuta exemplar. Balcon inchis cu tamplarie PVC. ParkLake Mall 1km.",
     features: {
       utilities: ["Curent", "Apa", "Canalizare", "Gaz"],
@@ -170,6 +173,7 @@ export const listings: Listing[] = [
     buildingHeight: "P+1+M",
     tags: ["Exclusivitate"],
     hasVideo: true,
+    videoUrl: "https://www.youtube.com/embed/VLJsZhq7zCE",
     description: "3 Loturi teren intravilan de 400 mp in Domnesti - Curtea Domneasca. Comision 0. Toate utilitatile deja branșate in curte. Toate autorizatiile si avizele deja pregatite, incepi direct constructia. Posibilitate achizitionare extra 2 loturi teren 800mp total. Strada asfaltata noua. Utilitati: canalizare, apa curenta, gaz, electricitate, fibra optica. Apropiere A0.",
     features: {
       utilities: ["Curent", "Apa", "Canalizare", "Gaz", "Acces internet", "Fibra optica"],
@@ -202,6 +206,7 @@ export const listings: Listing[] = [
     energyClass: "A",
     tags: ["Exclusivitate"],
     hasVideo: true,
+    videoUrl: "https://www.youtube.com/embed/eG4WXPggJNQ",
     description: "Primul complex care ofera incalzire gratuita. Complexul dispune de pompe de caldura geotermala + panouri fotovoltaice 640Kw. Incalzirea prin pardoseala este GRATUITA. Parchet SPC. Living spatios cu iesire balcon. Priveliste panoramica cu apusuri de soare. Complex Pipera Plaza 5 min.",
     features: {
       utilities: ["Curent", "Apa", "Canalizare", "Gaz"],
@@ -248,6 +253,7 @@ export const listings: Listing[] = [
     status: "REZERVAT",
     tags: ["Exclusivitate"],
     hasVideo: true,
+    videoUrl: "https://www.youtube.com/embed/7HCGyZ86Www",
     description: "Oferta rezervata, vizionarile sunt sistate. Casa tip duplex + curte proprie in Domnesti-Teghes. Casa din caramida pe structura beton. Vedere impresionanta catre padure. Living generos cu geamuri mari, bucatarie mobilata/utilata, 3 dormitoare, 2 bai. Curte imprejmuita cu gard lemn, zona gratar cu nuc matur, gazon. Strada privata iluminata. Acoperis tabla BILKA. Apropiere A0.",
     features: {
       utilities: ["Curent", "Gaz", "Put", "Fosa septica", "CATV", "Telefon", "Acces internet", "Fibra optica", "Sistem irigatie"],
@@ -293,6 +299,7 @@ export const listings: Listing[] = [
     orientation: "Sud-Est",
     tags: ["Exclusivitate"],
     hasVideo: true,
+    videoUrl: "https://www.youtube.com/embed/Hwwfh5-ZlKQ",
     description: "Vila individuala cu panouri fotovoltaice + baterie de stocare 10Kw. Casa solida din caramida pe structura beton. Curte impresionanta cu vegetatie si arbori maturi. Terasa imensa inchisa cu geamuri glisante. Living suprafete vitrate enorme, bucatarie inchisa, dormitor matrimonial 24mp + dressing + baie proprie. Sistem aspersoare propriu. 4 locuri parcare. Apropiere A0.",
     features: {
       utilities: ["Curent", "Apa", "Gaz", "Put", "Fosa septica", "CATV", "Telefon", "Acces internet", "Fibra optica", "Sistem irigatie"],
@@ -385,6 +392,7 @@ export const listings: Listing[] = [
     buildingHeight: "P+5",
     tags: ["Exclusivitate"],
     hasVideo: true,
+    videoUrl: "https://www.youtube.com/embed/3TAe_YnD2FE",
     description: "Imobil nou D+P+5E+M. Suprafete 30-42mp. Lift hidraulic. Structura beton, caramida Porotherm A+. Balcoane tip logie cu LED multicolora. PVC Veka 7 camere. Centrala 24Kw Motan + AMBIENT wireless. AC Yamato BONUS. Usi Yale, usi interior import Germania. Parchet 12mm. Obiecte sanitare cu bideu, cabina dus hidromasaj. Preturi de la 102.000 Euro.",
     features: {
       utilities: ["Curent", "Apa", "Canalizare", "Gaz"],

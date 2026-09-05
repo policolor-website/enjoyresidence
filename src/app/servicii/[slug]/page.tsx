@@ -138,6 +138,32 @@ export default function PropertyDetailPage() {
             <div className="text-ash leading-relaxed whitespace-pre-line">{property.description}</div>
           </motion.div>
 
+          {/* Video */}
+          {property.hasVideo && property.videoUrl && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.15 }}
+              className="mb-12"
+            >
+              <h2 className="font-display text-2xl font-bold text-cream mb-6 flex items-center gap-2">
+                <Play size={20} className="text-gold" /> Video prezentare
+              </h2>
+              <div className="glass rounded-2xl overflow-hidden">
+                <iframe
+                  width="100%"
+                  height="500"
+                  src={property.videoUrl}
+                  title={`Video ${property.title}`}
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  className="w-full"
+                />
+              </div>
+            </motion.div>
+          )}
+
           {/* Specificații */}
           {(property.features.utilities || property.features.heating || property.features.cooling || property.features.insulation || property.features.walls || property.features.floors || property.features.windows || property.features.usefulSpaces || property.features.kitchen || property.features.building) && (
             <motion.div
