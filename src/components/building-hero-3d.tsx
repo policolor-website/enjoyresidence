@@ -88,11 +88,11 @@ export default function BuildingHero3D() {
     // Camera keyframes
     // ============================================
     const CAMERA_KEYFRAMES = [
-      { progress: 0.00, position: [0, 20, 80],   target: [0, 10, 0] },
-      { progress: 0.25, position: [40, 15, 70],  target: [0, 10, 0] },
-      { progress: 0.50, position: [70, 25, 40],  target: [0, 10, 0] },
-      { progress: 0.75, position: [40, 30, -50], target: [0, 10, 0] },
-      { progress: 1.00, position: [0, 20, 60],   target: [0, 10, 0] },
+      { progress: 0.00, position: [0, 30, 120],   target: [0, 15, 0] },
+      { progress: 0.25, position: [60, 25, 100],  target: [0, 15, 0] },
+      { progress: 0.50, position: [100, 40, 60],  target: [0, 15, 0] },
+      { progress: 0.75, position: [60, 45, -70],  target: [0, 15, 0] },
+      { progress: 1.00, position: [0, 30, 90],    target: [0, 15, 0] },
     ];
 
     // ============================================
@@ -167,18 +167,17 @@ export default function BuildingHero3D() {
     const dracoLoader = new DRACOLoader();
     dracoLoader.setDecoderPath("https://www.gstatic.com/draco/v1/decoders/");
     loader.setDRACOLoader(dracoLoader);
-    console.log("%cLoading royal-house.glb (2.4MB Draco — 931 pieces)...", "color: #d4a050;");
+    console.log("%cLoading sehir.glb (14MB — city model)...", "color: #d4a050;");
     loader.load(
-      "/royal-house.glb",
+      "/sehir.glb",
       (gltf) => {
-        console.log("%croyal-house.glb loaded successfully!", "color: #00ff00; font-weight: bold;");
+        console.log("%csehir.glb loaded successfully!", "color: #00ff00; font-weight: bold;");
         buildingModel = gltf.scene;
-        // Model already Y-up (rotation baked in Blender) — no rotation needed
 
         const box = new THREE.Box3().setFromObject(buildingModel);
         const size = box.getSize(new THREE.Vector3());
         const maxDim = Math.max(size.x, size.y, size.z);
-        const scale = (40 / maxDim) * 1.75;
+        const scale = (60 / maxDim) * 1.5;
         buildingModel.scale.setScalar(scale);
 
         const box2 = new THREE.Box3().setFromObject(buildingModel);
@@ -272,12 +271,12 @@ export default function BuildingHero3D() {
         if (xhr.lengthComputable) {
           const pct = Math.round((xhr.loaded / xhr.total) * 100);
           if (pct % 25 === 0) {
-            console.log(`%cLoading royal-house.glb: ${pct}%`, "color: #d4a050;");
+            console.log(`%cLoading sehir.glb: ${pct}%`, "color: #d4a050;");
           }
         }
       },
       (error) => {
-        console.error("Error loading royal-house.glb:", error);
+        console.error("Error loading sehir.glb:", error);
       }
     );
 

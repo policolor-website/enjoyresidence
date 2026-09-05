@@ -8,11 +8,11 @@ import { brand } from "@/lib/brand";
 
 const navItems = [
   { href: "/", label: "Acasă" },
+  { href: "/servicii", label: "Vânzări" },
+  { href: "/inchirieri-utilaje", label: "Închirieri" },
+  { href: "/portofoliu", label: "Ansambluri" },
   { href: "/despre-noi", label: "Despre" },
-  { href: "/servicii", label: "Servicii" },
-  { href: "/inchirieri-utilaje", label: "Închirieri Utilaje" },
-  { href: "/portofoliu", label: "Portofoliu" },
-  { href: "/contact", label: "Obțineți o Cotație" },
+  { href: "/contact", label: "Contact" },
 ];
 
 export default function Header() {
@@ -34,8 +34,13 @@ export default function Header() {
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? "bg-ink/95 backdrop-blur-md py-3 border-b border-gold/20" : "py-5 bg-transparent"}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between gap-4">
         <Link href="/" className="flex items-center gap-3 group min-w-0 shrink">
+          <img
+            src="/enjoyresidence-logo.png"
+            alt={brand.name}
+            className="w-10 h-10 sm:w-12 sm:h-12 object-contain shrink-0 rounded-full"
+          />
           <div className="flex flex-col leading-none min-w-0">
-            <span className="font-display text-xl sm:text-2xl font-bold gold-text tracking-tight truncate">{brand.name}</span>
+            <span className="font-display text-xl sm:text-2xl font-bold text-white tracking-tight truncate">{brand.name}</span>
             <span className={`text-[9px] sm:text-[10px] tracking-[0.2em] sm:tracking-[0.3em] uppercase mt-0.5 transition-colors duration-300 ${scrolled ? "text-ash" : "text-white/70"} truncate`}>{brand.tagline}</span>
           </div>
         </Link>
@@ -53,9 +58,9 @@ export default function Header() {
         </nav>
 
         <div className="hidden lg:flex items-center gap-4">
-          <a href={`tel:${brand.phone}`} className={`flex items-center gap-2 text-sm transition-colors ${scrolled ? "text-ash hover:text-gold" : "text-white hover:text-gold"}`}>
+          <a href={`tel:${brand.phone.replace(/\s/g, "")}`} className={`flex items-center gap-2 text-sm transition-colors ${scrolled ? "text-ash hover:text-gold" : "text-white hover:text-gold"}`}>
             <Phone size={14} />
-            <span>Cere o ofertă</span>
+            <span>{brand.phone}</span>
           </a>
         </div>
 

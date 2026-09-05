@@ -4,11 +4,11 @@ import Footer from "@/components/footer";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "LUCA HOME CONSTRUCT | Construcții profesionale Case, Acoperișuri, Reparații",
-  description: "Construcții profesionale case, acoperișuri și reparații în România și Moldova. Telefon: +373 60 191 817.",
+  title: "Enjoy Residence | Tranzacții imobiliare București și Ilfov",
+  description: "Vânzări și închirieri apartamente, case, vile, garsoniere, terenuri în București și Ilfov. Telefon: 0721.522.411.",
   openGraph: {
-    title: "LUCA HOME CONSTRUCT | Construcții profesionale Case, Acoperișuri, Reparații",
-    description: "Construcții profesionale case, acoperișuri și reparații. Lucrăm în România și Moldova.",
+    title: "Enjoy Residence | Tranzacții imobiliare București și Ilfov",
+    description: "Vânzări și închirieri imobiliare în București și Ilfov. Apartamente, case, vile, garsoniere, terenuri.",
     locale: "ro_RO",
     type: "website",
   },

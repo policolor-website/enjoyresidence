@@ -3,127 +3,59 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { useParams } from "next/navigation";
-import { ArrowRight, ArrowLeft, Home, Zap, Wrench, PaintBucket, Truck, Check } from "lucide-react";
+import { ArrowRight, ArrowLeft, MapPin, BedDouble, Bath, Maximize, Building, Calendar, Check, Play, Phone, Mail, Home as HomeIcon } from "lucide-react";
 import { brand } from "@/lib/brand";
+import { listings } from "@/lib/listings";
 
-const servicesData: Record<string, {
-  icon: any;
-  title: string;
-  hero: string;
-  description: string;
-  features: string[];
-  image: string;
-}> = {
-  "constructii-case": {
-    icon: Home,
-    title: "Construcții Case",
-    hero: "Construcții Case",
-    description: `Construim case și vile în ${brand.workArea}, de la fundație până la stadiul agreat cu beneficiarul: la roșu, la gri sau la cheie. Lucrăm după proiectul tău sau te ajutăm să pornești lucrarea organizat, cu ofertă clară și termene. Responsabilul tehnic cu execuția (RTE) colaborează cu noi pentru a asigura calitatea lucrării.`,
-    features: [
-      "Case parter, P+1, vile",
-      "Fundații, structură, zidărie",
-      "Planșee, acoperiș, termoizolație",
-      "Case la roșu, la gri și la cheie",
-      "Modificări și extinderi pe clădiri existente",
-      "RTE autorizați care respectă proiectul de execuție",
-      "Ofertă clară și termene asumate",
-    ],
-    image: "/edil/service-case.png",
-  },
-  "instalatii-electrice": {
-    icon: Zap,
-    title: "Instalații Electrice",
-    hero: "Instalații Electrice",
-    description: "Executăm instalații electrice pentru case, vile, apartamente, birouri și spații comerciale. Lucrăm la clădiri noi și la instalații existente: proiectare de execuție, montaj, refacere și punere în funcțiune, împreună cu electricieni autorizați.",
-    features: [
-      "Instalații electrice pentru case noi",
-      "Refacere și modernizare instalație existentă",
-      "Tablouri electrice",
-      "Prize, întrerupătoare, doze, circuite",
-      "Iluminat interior și exterior",
-      "Circuite dedicate pentru climatizare, electrocasnice sau atelier",
-      "Instalații electrice pentru spații nerezidențiale",
-      "Verificări și remedieri la instalații existente",
-      "Personal autorizat / parteneri atestați",
-    ],
-    image: "/edil/service-instalatii.png",
-  },
-  "instalatii-sanitare": {
-    icon: Wrench,
-    title: "Instalații Sanitare",
-    hero: "Instalații Sanitare",
-    description: "Executăm instalații apă-canal, termoficare, centrale termice, stații de pompare. Oferim mentenanță preventivă și corectivă pentru clădiri civile și industriale. Utilizăm cele mai noi tehnologii în procedurile de montaj pentru instalațiile de climatizare, ventilatie, încălzire centrală, sanitare, stingere incendiu, pompe de căldură.",
-    features: [
-      "Instalații rețele de apă și canalizare",
-      "Racorduri canal, modelarea sistemelor de alimentare cu apă",
-      "Instalații termice — montaj radiatoare, conducte, centrale termice",
-      "Centrale termice pe gaz sau pe lemne (autorizate ANRGN)",
-      "Stații de pompare — casele pompelor complete",
-      "Boilere, vase de expansiune, supape de siguranță",
-      "Automatizări în funcție de temperaturile interioară și exterioară",
-      "Pompe de circulație, pompe submersibile, hidrofoare",
-      "Stații dedurizare și filtre, panouri solare",
-      "Mentenanță preventivă, predictivă și corectivă",
-    ],
-    image: "/edil/service-amenajari.png",
-  },
-  "renovari-amenajari": {
-    icon: PaintBucket,
-    title: "Renovări / Amenajări",
-    hero: "Renovări și Amenajări",
-    description: "Servicii de renovări clădiri, de la consolidare structură până la finisaje. Amenajări interioare și exterioare pentru orice tip de imobil. Aplicăm soluții moderne de recompartimentare a spațiilor interioare, executăm lucrări de placare, izolații, vopsitorie, zugrăveli decorative, instalații termice și sanitare, lucrări de tâmplărie.",
-    features: [
-      "Consolidare structură și fundație",
-      "Recompartimentare spații interioare",
-      "Placare pereți cu gips-carton",
-      "Izolații termice, fonice, hidroizolații",
-      "Placări gresie, faianță, marmură",
-      "Vopsitorie, zugrăveli decorative",
-      "Montaj parchet, pardoseli, lambriu",
-      "Montaj tâmplărie PVC cu geam termopan",
-      "Amenajări exterioare: termosistem, vopsitorii, tencuieli",
-    ],
-    image: "/edil/hero.jpg",
-  },
-  "drumuri-poduri": {
-    icon: Truck,
-    title: "Drumuri și Poduri",
-    hero: "Drumuri și Poduri",
-    description: "Construcții drumuri și poduri, alei și trotuare, parcări și platforme betonate, asfaltări. Realizăm infrastructură rutieră completă, de la terasamente la stratul de uzură. Avem experiență în lucrări de mare anvergură: asfaltări parcări comerciale (CORA Pantelimon, ROMEXPO), asfaltări curți și străzi.",
-    features: [
-      "Construcții drumuri și poduri",
-      "Alei și trotuare",
-      "Parcări și platforme betonate",
-      "Asfaltări — parcări, curți, străzi",
-      "Plombare gropi și reparații asfalt",
-      "Terasamente și infrastructură rutieră",
-      "Lucrări de mare anvergură (parcări comerciale, ROMEXPO)",
-    ],
-    image: "/edil/art-temple.jpg",
-  },
-};
-
-export default function ServiceDetailPage() {
+export default function PropertyDetailPage() {
   const params = useParams();
-  const slug = params.slug as string;
-  const service = servicesData[slug];
+  const idParam = params.slug as string;
+  const property = listings.find(l => String(l.id) === idParam);
 
-  if (!service) {
+  if (!property) {
     return (
       <main className="pt-20 min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <h1 className="font-display text-3xl text-cream mb-4">Serviciu negăsit</h1>
-          <Link href="/servicii" className="text-gold hover:underline">← Înapoi la servicii</Link>
+          <h1 className="font-display text-3xl text-cream mb-4">Proprietate negăsită</h1>
+          <Link href="/servicii" className="text-gold hover:underline">← Înapoi la oferte</Link>
         </div>
       </main>
     );
   }
 
+  const relatedListings = listings.filter(l => l.id !== property.id && l.transaction === property.transaction).slice(0, 3);
+
+  // Caracteristici principale
+  const characteristics: { label: string; value?: string | number }[] = [
+    { label: "Nr. camere", value: property.rooms },
+    { label: "S. utilă", value: property.surface ? `${property.surface} mp` : undefined },
+    { label: "S. teren", value: property.landSurface ? `${property.landSurface} mp` : undefined },
+    { label: "S. construită", value: property.surfaceBuilt ? `${property.surfaceBuilt} mp` : undefined },
+    { label: "Compartimentare", value: property.compartimentare },
+    { label: "Confort", value: property.confort },
+    { label: "Etaj", value: property.floor },
+    { label: "Nr. băi", value: property.bathrooms },
+    { label: "Nr. bucătării", value: property.kitchens },
+    { label: "Nr. balcoane", value: property.balconies },
+    { label: "Nr. parcări", value: property.parkings },
+    { label: "Nr. garaje", value: property.garages },
+    { label: "An construcție", value: property.yearBuilt },
+    { label: "An renovare", value: property.yearRenovated },
+    { label: "Structură", value: property.structure },
+    { label: "Tip imobil", value: property.buildingType },
+    { label: "Regim înălțime", value: property.buildingHeight },
+    { label: "Clasă energetică", value: property.energyClass },
+    { label: "Front stradal", value: property.frontStreetal ? `${property.frontStreetal} m` : undefined },
+    { label: "Orientare", value: property.orientation },
+    { label: "Clasificare teren", value: property.landClass },
+  ].filter(c => c.value !== undefined);
+
   return (
     <main className="pt-20">
+      {/* Hero cu imagine */}
       <section className="relative h-[50vh] min-h-[400px] overflow-hidden">
         <div className="absolute inset-0">
-          <img src={service.image} alt={service.title} className="w-full h-full object-cover" />
+          <img src={property.image} alt={property.title} className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-ink/70" />
         </div>
         <div className="relative z-10 h-full flex items-center justify-center px-6">
@@ -133,71 +65,253 @@ export default function ServiceDetailPage() {
             transition={{ duration: 0.8, ease: [0.25, 0.4, 0.25, 1] }}
             className="text-center max-w-3xl"
           >
-            <div className="w-16 h-16 rounded-2xl bg-gold/20 backdrop-blur-sm flex items-center justify-center mb-6 mx-auto">
-              <service.icon size={32} className="text-gold" />
+            {/* Breadcrumb */}
+            <div className="flex items-center justify-center gap-2 text-xs text-ash mb-4">
+              <Link href="/" className="hover:text-gold">Acasă</Link>
+              <span>/</span>
+              <Link href="/servicii" className="hover:text-gold">Vânzări</Link>
+              <span>/</span>
+              <span className="text-gold">{property.zone}</span>
             </div>
-            <span className="text-xs tracking-[0.3em] uppercase text-gold mb-4 block">{brand.name}</span>
-            <h1 className="font-display text-4xl md:text-6xl font-bold text-cream mb-4">{service.hero}</h1>
+            {/* Tags */}
+            <div className="flex justify-center gap-2 mb-4">
+              {property.tags.includes("TOP") && (
+                <span className="px-3 py-1 rounded-full text-xs font-bold bg-gold text-ink">TOP</span>
+              )}
+              {property.tags.includes("Exclusivitate") && (
+                <span className="px-3 py-1 rounded-full text-xs font-bold bg-gold/20 text-gold border border-gold/30">Exclusivitate</span>
+              )}
+              {property.hasVideo && (
+                <span className="px-3 py-1 rounded-full text-xs font-bold bg-red-600/80 text-white flex items-center gap-1">
+                  <Play size={12} /> VEZI VIDEO
+                </span>
+              )}
+              {property.status === "REZERVAT" && (
+                <span className="px-3 py-1 rounded-full text-xs font-bold bg-red-900/80 text-white">REZERVAT</span>
+              )}
+            </div>
+            <h1 className="font-display text-3xl md:text-5xl font-bold text-cream mb-4">{property.title}</h1>
+            <p className="text-lg text-ash flex items-center justify-center gap-2 mb-4">
+              <MapPin size={16} className="text-gold" /> {property.city}, {property.zone}
+            </p>
+            <p className="font-display text-4xl md:text-5xl font-bold gold-text">
+              {property.price.toLocaleString("ro")} {property.priceUnit}
+            </p>
+            <p className="text-xs text-stone mt-2">ID: {property.externalId}</p>
           </motion.div>
         </div>
       </section>
 
+      {/* Caracteristici + Descriere */}
       <section className="py-20 px-6 bg-canvas">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-5xl mx-auto">
           <Link href="/servicii" className="inline-flex items-center gap-2 text-ash hover:text-gold transition-colors mb-8 text-sm">
-            <ArrowLeft size={16} /> Toate serviciile
+            <ArrowLeft size={16} /> Toate ofertele
           </Link>
 
+          {/* Caracteristici */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
+            className="glass rounded-2xl p-6 mb-12"
           >
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-cream mb-6">{service.title}</h2>
-            <p className="text-lg text-ash leading-relaxed mb-12">{service.description}</p>
-
-            <h3 className="font-display text-xl font-bold text-cream mb-6">Ce oferim:</h3>
-            <div className="space-y-3">
-              {service.features.map((feat, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: i * 0.06 }}
-                  className="flex items-start gap-3"
-                >
-                  <span className="w-6 h-6 rounded-lg bg-gold/10 flex items-center justify-center shrink-0 mt-0.5">
-                    <Check size={14} className="text-gold" />
-                  </span>
-                  <span className="text-cream text-sm leading-relaxed">{feat}</span>
-                </motion.div>
+            <h2 className="font-display text-xl font-bold text-cream mb-6">Caracteristici</h2>
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+              {characteristics.map((c, i) => (
+                <div key={i} className="flex flex-col">
+                  <span className="text-xs text-stone uppercase tracking-wide">{c.label}</span>
+                  <span className="text-sm text-cream font-semibold">{c.value}</span>
+                </div>
               ))}
             </div>
           </motion.div>
 
+          {/* Descriere */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="mb-12"
+          >
+            <h2 className="font-display text-2xl font-bold text-cream mb-6">Descriere</h2>
+            <div className="text-ash leading-relaxed whitespace-pre-line">{property.description}</div>
+          </motion.div>
+
+          {/* Specificații */}
+          {(property.features.utilities || property.features.heating || property.features.cooling || property.features.insulation || property.features.walls || property.features.floors || property.features.windows || property.features.usefulSpaces || property.features.kitchen || property.features.building) && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="glass rounded-2xl p-6 mb-12"
+            >
+              <h2 className="font-display text-2xl font-bold text-cream mb-6">Specificații</h2>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                {property.features.utilities && property.features.utilities.length > 0 && (
+                  <div>
+                    <h3 className="text-sm font-bold text-gold mb-3 uppercase tracking-wide">Utilități generale</h3>
+                    <ul className="space-y-2">
+                      {property.features.utilities.map((u, i) => (
+                        <li key={i} className="flex items-start gap-2 text-xs text-ash">
+                          <Check size={12} className="text-gold mt-0.5 shrink-0" /> {u}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+                {(property.features.heating || property.features.cooling) && (
+                  <div>
+                    <h3 className="text-sm font-bold text-gold mb-3 uppercase tracking-wide">Încălzire / Climatizare</h3>
+                    <ul className="space-y-2">
+                      {property.features.heating?.map((h, i) => (
+                        <li key={`h${i}`} className="flex items-start gap-2 text-xs text-ash">
+                          <Check size={12} className="text-gold mt-0.5 shrink-0" /> {h}
+                        </li>
+                      ))}
+                      {property.features.cooling?.map((c, i) => (
+                        <li key={`c${i}`} className="flex items-start gap-2 text-xs text-ash">
+                          <Check size={12} className="text-gold mt-0.5 shrink-0" /> {c}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+                {(property.features.walls || property.features.floors || property.features.windows || property.features.state) && (
+                  <div>
+                    <h3 className="text-sm font-bold text-gold mb-3 uppercase tracking-wide">Finisaje</h3>
+                    <ul className="space-y-2">
+                      {property.features.walls?.map((w, i) => (
+                        <li key={`w${i}`} className="flex items-start gap-2 text-xs text-ash">
+                          <Check size={12} className="text-gold mt-0.5 shrink-0" /> Pereti: {w}
+                        </li>
+                      ))}
+                      {property.features.floors?.map((f, i) => (
+                        <li key={`f${i}`} className="flex items-start gap-2 text-xs text-ash">
+                          <Check size={12} className="text-gold mt-0.5 shrink-0" /> Podele: {f}
+                        </li>
+                      ))}
+                      {property.features.windows?.map((w, i) => (
+                        <li key={`fw${i}`} className="flex items-start gap-2 text-xs text-ash">
+                          <Check size={12} className="text-gold mt-0.5 shrink-0" /> Ferestre: {w}
+                        </li>
+                      ))}
+                      {property.features.state && (
+                        <li className="flex items-start gap-2 text-xs text-ash">
+                          <Check size={12} className="text-gold mt-0.5 shrink-0" /> Stare: {property.features.state}
+                        </li>
+                      )}
+                    </ul>
+                  </div>
+                )}
+                {(property.features.usefulSpaces || property.features.kitchen) && (
+                  <div>
+                    <h3 className="text-sm font-bold text-gold mb-3 uppercase tracking-wide">Dotări</h3>
+                    <ul className="space-y-2">
+                      {property.features.usefulSpaces?.map((s, i) => (
+                        <li key={`s${i}`} className="flex items-start gap-2 text-xs text-ash">
+                          <Check size={12} className="text-gold mt-0.5 shrink-0" /> {s}
+                        </li>
+                      ))}
+                      {property.features.kitchen?.map((k, i) => (
+                        <li key={`k${i}`} className="flex items-start gap-2 text-xs text-ash">
+                          <Check size={12} className="text-gold mt-0.5 shrink-0" /> Bucătărie: {k}
+                        </li>
+                      ))}
+                      {property.features.furnished && (
+                        <li className="flex items-start gap-2 text-xs text-ash">
+                          <Check size={12} className="text-gold mt-0.5 shrink-0" /> Mobilat: {property.features.furnished}
+                        </li>
+                      )}
+                    </ul>
+                  </div>
+                )}
+                {property.features.building && property.features.building.length > 0 && (
+                  <div>
+                    <h3 className="text-sm font-bold text-gold mb-3 uppercase tracking-wide">Imobil</h3>
+                    <ul className="space-y-2">
+                      {property.features.building.map((b, i) => (
+                        <li key={`b${i}`} className="flex items-start gap-2 text-xs text-ash">
+                          <Check size={12} className="text-gold mt-0.5 shrink-0" /> {b}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </div>
+            </motion.div>
+          )}
+
+          {/* Contact agent */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.6 }}
-            className="mt-16 glass rounded-2xl p-8 text-center"
+            className="glass rounded-2xl p-8"
           >
             <h3 className="font-display text-2xl font-bold text-cream mb-4">
-              Vrei o ofertă personalizată? Apelează-ne!
+              Vrei mai multe informații?
             </h3>
             <p className="text-ash mb-6">
-              <a href={`tel:${brand.phone.replace(/\s/g, "")}`} className="text-gold text-2xl font-bold">{brand.phone}</a>
+              Contactează-ne pentru detalii despre ID {property.externalId}.
             </p>
+            <div className="flex flex-col sm:flex-row gap-4 mb-6">
+              <a href={`tel:${brand.phone.replace(/\s/g, "")}`} className="flex items-center gap-2 text-gold text-lg font-bold">
+                <Phone size={18} /> {brand.phone}
+              </a>
+              <a href={`mailto:${brand.email}`} className="flex items-center gap-2 text-gold text-lg font-bold">
+                <Mail size={18} /> {brand.email}
+              </a>
+            </div>
             <Link
               href="/contact"
               className="inline-flex items-center gap-2 px-8 py-4 bg-gold text-ink font-semibold rounded-lg hover:bg-gold-light transition-colors duration-300"
             >
-              Cere o ofertă <ArrowRight size={18} />
+              Contactează-ne <ArrowRight size={18} />
             </Link>
           </motion.div>
         </div>
       </section>
+
+      {/* Recomandări */}
+      {relatedListings.length > 0 && (
+        <section className="py-20 px-6 bg-surface">
+          <div className="max-w-7xl mx-auto">
+            <h2 className="font-display text-3xl font-bold text-cream mb-8 text-center">Recomandări</h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {relatedListings.map((prop, i) => (
+                <motion.div
+                  key={prop.id}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ duration: 0.5, delay: i * 0.1 }}
+                >
+                  <Link
+                    href={`/servicii/${prop.id}`}
+                    className="group block glass rounded-2xl overflow-hidden hover:border-gold/30 transition-all duration-500 h-full"
+                  >
+                    <div className="relative h-48 overflow-hidden">
+                      <img src={prop.image} alt={prop.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-ink/90 to-transparent" />
+                      <div className="absolute bottom-3 left-3 right-3">
+                        <p className="font-display text-lg font-bold gold-text">{prop.price.toLocaleString("ro")} {prop.priceUnit}</p>
+                        <p className="text-xs text-ash flex items-center gap-1 mt-1">
+                          <MapPin size={10} /> {prop.city}, {prop.zone}
+                        </p>
+                      </div>
+                    </div>
+                    <div className="p-4">
+                      <h3 className="font-display text-sm font-bold text-cream line-clamp-2">{prop.title}</h3>
+                    </div>
+                  </Link>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
     </main>
   );
 }

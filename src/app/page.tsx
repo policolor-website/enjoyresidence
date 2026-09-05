@@ -3,72 +3,73 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { ArrowRight, Home, Zap, Wrench, PaintBucket, Truck, Award, ShieldCheck, Sparkles, TrendingUp, Briefcase, Clock } from "lucide-react";
+import { ArrowRight, Home, Building, MapPin, Award, ShieldCheck, Sparkles, TrendingUp, Briefcase, Clock, BedDouble, Bath, Maximize, Play } from "lucide-react";
 import BuildingHero3D from "@/components/building-hero-3d";
 import { brand } from "@/lib/brand";
+import { listings, testimonials } from "@/lib/listings";
 
 // ============================================
-// SERVICII — 5 servicii LUCA HOME CONSTRUCT
+// CATEGORII — tipuri de proprietăți
 // ============================================
-const services = [
+const categories = [
   {
-    slug: "constructii-case",
+    slug: "apartament",
+    icon: Building,
+    title: "Apartamente",
+    short: "2 și 3 camere, decomandate, semidecomandate",
+    text: "Apartamente în imobile noi și reabilitate, în toate zonele Bucureștiului: Titan, Pipera, Theodor Pallady, Unirii, Lujerului și multe altele.",
+    image: "/enjoyresidence/images/listing-630-apt-3cam-titan.jpg",
+  },
+  {
+    slug: "casa-vila",
     icon: Home,
-    title: "Construcții Case",
-    short: "Case parter, P+1, vile — la roșu, la gri sau la cheie",
-    text: `Construim case și vile în ${brand.workArea}, de la fundație până la stadiul agreat cu beneficiarul. Lucrăm după proiectul tău sau te ajutăm să pornești lucrarea organizat.`,
-    image: "/edil/service-case.png",
+    title: "Case și Vile",
+    short: "Vile individuale, duplex, cu curte proprie",
+    text: "Case și vile în Domnești, Otopeni, Drumul Taberei. De la vile P+M cu curte proprie, până la proprietăți de lux cu panouri fotovoltaice și design unic.",
+    image: "/enjoyresidence/images/listing-682-vila-5cam-domnesti.jpg",
   },
   {
-    slug: "instalatii-electrice",
-    icon: Zap,
-    title: "Instalații Electrice",
-    short: "Case, vile, apartamente, birouri, spații comerciale",
-    text: "Executăm instalații electrice pentru clădiri noi și existente: proiectare de execuție, montaj, refacere și punere în funcțiune, cu electricieni autorizați.",
-    image: "/edil/service-instalatii.png",
+    slug: "garsoniera",
+    icon: BedDouble,
+    title: "Garsoniere",
+    short: "Studii, decomandate, imobile noi 2021-2026",
+    text: "Garsoniere în imobile noi cu finisaje premium: Militari, Lujerului, Lacul Morii. Suprafețe 30-44 mp, lift, centrală individuală, finisaje moderne.",
+    image: "/enjoyresidence/images/listing-668-garsoniera-lujerului.jpg",
   },
   {
-    slug: "instalatii-sanitare",
-    icon: Wrench,
-    title: "Instalații Sanitare",
-    short: "Apă-canal, termoficare, centrale termice, stații pompare",
-    text: "Instalații apă-canal, termice, sanitare, centrale termice, stații de pompare. Mentenanță preventivă și corectivă pentru clădiri civile și industriale.",
-    image: "/edil/service-amenajari.png",
+    slug: "teren",
+    icon: MapPin,
+    title: "Terenuri",
+    short: "Intravilan, cu utilități, autorizații pregătite",
+    text: "Terenuri intravilane în Domnești și Ilfov, cu toate utilitățile branșate în curte și autorizații de construcție pregătite. Front stradal, acces asfaltat.",
+    image: "/enjoyresidence/images/listing-687-teren-domnesti.jpg",
   },
   {
-    slug: "renovari-amenajari",
-    icon: PaintBucket,
-    title: "Renovări / Amenajări",
-    short: "Consolidare structură, finisaje interioare și exterioare",
-    text: "Servicii de renovări clădiri, de la consolidare structură până la finisaje. Amenajări interioare și exterioare pentru orice tip de imobil.",
-    image: "/edil/hero.jpg",
-  },
-  {
-    slug: "drumuri-poduri",
-    icon: Truck,
-    title: "Drumuri și Poduri",
-    short: "Alei, trotuare, parcari, platforme betonate, asfaltări",
-    text: "Construcții drumuri și poduri, alei și trotuare, parcări și platforme betonate, asfaltări. Infrastructură rutieră completă.",
-    image: "/edil/art-temple.jpg",
-  },
-  {
-    slug: "inchirieri-utilaje",
+    slug: "inchirieri",
     icon: Briefcase,
-    title: "Închirieri Utilaje",
-    short: "Buldo, bobcat, basculante, excavatoare, freze asfalt",
-    text: "Închiriem utilaje de construcții și oferim serviciile aferente: buldo, bobcat, basculante, cilindri compactori, freze asfalt/beton, autogreder, excavatoare.",
-    image: "/edil/service-proiectare.png",
+    title: "Închirieri",
+    short: "Garsoniere și apartamente mobilate/utilate",
+    text: "Închirieri garsoniere și apartamente în București: Drumul Taberei, Unirii, Militari, Lujerului. Proprietăți renovate, mobilate și utilate complet.",
+    image: "/enjoyresidence/images/listing-691-garsoniera-inch-drumultaberei.jpg",
+  },
+  {
+    slug: "ansambluri",
+    icon: Building,
+    title: "Ansambluri Rezidențiale",
+    short: "Complexuri proprii, vile duplex, boutique",
+    text: "Ansambluri rezidențiale Enjoy Residence: Otopeni, Giulești, Lacul Morii, Militari, Drumul Taberei. Vile duplex și apartamente boutique cu finisaje premium.",
+    image: "/enjoyresidence/images/listing-685-apt-2cam-pipera.jpg",
   },
 ];
 
 // ============================================
-// VALORI — 4 valori LUCA HOME CONSTRUCT
+// VALORI — Enjoy Residence
 // ============================================
 const values = [
-  { icon: ShieldCheck, title: "Garanția Calității", text: "Oferim cele mai eficiente soluții pentru toate etapele proiectului, astfel încât la finalizare să realizați o economie considerabilă fără a face rabat de la calitate." },
-  { icon: Award, title: "Experiență Bogată", text: "Companie cu experiență în domeniu, cu parteneriate strategice care ne ajută să vă oferim un raport calitate-pret imbatabil." },
-  { icon: Sparkles, title: "Profesioniști", text: "Echipe formate din profesioniști în domeniu. Costuri reduse pentru toată gama de lucrări, cu personal specializat și atestat." },
-  { icon: TrendingUp, title: "Creativitate", text: "Una dintre calitățile noastre este creativitatea. Profitati de ea pentru a obține soluții optimale pentru proiectul dumneavoastră." },
+  { icon: ShieldCheck, title: "Exclusivitate", text: "Oferim oferte exclusive, supuse unor termeni și condiții. Ne rezervăm dreptul de a selecta clienții pentru a asigura calitatea tranzacției." },
+  { icon: Award, title: "Profesionalism", text: "O companie cu angajați profesioniști care au o bună și reușită experiență în tranzacții imobiliare și în colaborarea cu oamenii." },
+  { icon: Sparkles, title: "Ghidare Completă", text: "Facem tot ce trebuie ca tu să fii „enjoy\", liniștit și împlinit în noua locuință. Îți identificăm nevoile, îți arătăm soluțiile, apoi ne ocupăm până la final." },
+  { icon: TrendingUp, title: "Rezultate Rapide", text: "Timpul tău este prețios. Ne ocupăm de toate procedurile necesare încheierii tranzacției, ca să poți folosi timpul în alte scopuri prioritare." },
 ];
 
 export default function HomePage() {
@@ -90,6 +91,9 @@ export default function HomePage() {
   const heroTextOpacity = scrollProgress < 0.15
     ? 1 - (scrollProgress / 0.15)
     : 0;
+
+  // Top 4 listings for featured section
+  const featuredListings = listings.filter(l => l.tags.includes("TOP") || l.tags.includes("Exclusivitate")).slice(0, 4);
 
   return (
     <main>
@@ -123,7 +127,7 @@ export default function HomePage() {
             >
               <span className="gold-text">{brand.name}</span>
               <br />
-              <span className="text-cream text-3xl md:text-5xl italic font-normal">Construim și amenajăm spații comerciale și rezidențiale</span>
+              <span className="text-cream text-3xl md:text-5xl italic font-normal">Vânzări și închirieri imobiliare în București și Ilfov</span>
             </motion.h1>
 
             <motion.p
@@ -132,7 +136,7 @@ export default function HomePage() {
               transition={{ duration: 0.8, delay: 0.3 }}
               className="text-lg text-ash max-w-2xl mx-auto mb-10 leading-relaxed"
             >
-              Specialisti în construcții și instalații moderne. Realizăm lucrări de mare anvergură în domeniul construcțiilor civile, industriale și rezidențiale.
+              Apartamente, case, vile, garsoniere și terenuri. Te ajutăm să găsești locuința potrivită, cu oferte exclusive și consultanță completă până la finalul tranzacției.
             </motion.p>
 
             <motion.div
@@ -142,16 +146,16 @@ export default function HomePage() {
               className="flex flex-col sm:flex-row gap-4 justify-center items-center pointer-events-auto"
             >
               <Link
-                href="/portofoliu"
+                href="/servicii"
                 className="inline-flex items-center gap-2 px-8 py-4 glass text-gold font-semibold rounded-lg hover:border-gold/50 hover:shadow-[0_4px_30px_rgba(255,107,0,0.25)] transition-all duration-300"
               >
-                Lucrări recente <ArrowRight size={18} />
+                Vezi ofertele <ArrowRight size={18} />
               </Link>
               <Link
                 href="/contact"
                 className="inline-flex items-center gap-2 px-8 py-4 glass text-cream font-semibold rounded-lg hover:border-gold/50 hover:shadow-[0_4px_30px_rgba(255,107,0,0.25)] transition-all duration-300"
               >
-                Obțineți o cotație
+                Contactează-ne
               </Link>
             </motion.div>
           </div>
@@ -164,9 +168,94 @@ export default function HomePage() {
       </section>
 
       {/* ============================================ */}
-      {/* DESPRE COMPANIE */}
+      {/* OFERTE FEATURED */}
       {/* ============================================ */}
       <section className="py-24 px-6 relative bg-canvas">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: -40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.6, ease: [0.25, 0.4, 0.25, 1] }}
+            className="text-center mb-16"
+          >
+            <span className="text-xs tracking-[0.3em] uppercase text-gold mb-4 block">Oferte de top</span>
+            <h2 className="font-display text-4xl md:text-5xl font-bold text-cream">Proprietăți recomandate</h2>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {featuredListings.map((prop, i) => {
+              const animations = [
+                { initial: { opacity: 0, x: -40 }, animate: { opacity: 1, x: 0 } },
+                { initial: { opacity: 0, scale: 0.9 }, animate: { opacity: 1, scale: 1 } },
+                { initial: { opacity: 0, x: 40 }, animate: { opacity: 1, x: 0 } },
+                { initial: { opacity: 0, y: 30 }, animate: { opacity: 1, y: 0 } },
+              ];
+              const anim = animations[i % 4];
+              return (
+                <motion.div
+                  key={prop.id}
+                  initial={anim.initial}
+                  whileInView={anim.animate}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ duration: 0.6, delay: (i % 4) * 0.1, ease: [0.25, 0.4, 0.25, 1] }}
+                  style={{ willChange: "transform, opacity" }}
+                >
+                  <Link
+                    href={`/servicii/${prop.id}`}
+                    className="group block glass rounded-2xl overflow-hidden hover:border-gold/30 transition-all duration-500 h-full"
+                  >
+                    <div className="relative h-56 overflow-hidden bg-ink/50">
+                      <img
+                        src={prop.image}
+                        alt={prop.title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/40 to-transparent" />
+                      <div className="absolute top-3 left-3 flex gap-2">
+                        {prop.tags.includes("TOP") && (
+                          <span className="px-2 py-1 rounded-full text-[10px] font-bold bg-gold text-ink">TOP</span>
+                        )}
+                        {prop.tags.includes("Exclusivitate") && (
+                          <span className="px-2 py-1 rounded-full text-[10px] font-bold bg-gold/20 text-gold border border-gold/30">Exclusivitate</span>
+                        )}
+                        {prop.hasVideo && (
+                          <span className="px-2 py-1 rounded-full text-[10px] font-bold bg-red-600/80 text-white flex items-center gap-1">
+                            <Play size={10} /> VIDEO
+                          </span>
+                        )}
+                        {prop.status === "REZERVAT" && (
+                          <span className="px-2 py-1 rounded-full text-[10px] font-bold bg-red-900/80 text-white">REZERVAT</span>
+                        )}
+                      </div>
+                      <div className="absolute bottom-3 left-3 right-3">
+                        <p className="font-display text-xl font-bold gold-text">{prop.price.toLocaleString("ro")} {prop.priceUnit}</p>
+                        <p className="text-xs text-ash flex items-center gap-1 mt-1">
+                          <MapPin size={10} /> {prop.city}, {prop.zone}
+                        </p>
+                      </div>
+                    </div>
+                    <div className="p-4">
+                      <h3 className="font-display text-sm font-bold text-cream mb-3 line-clamp-2 leading-tight">{prop.title}</h3>
+                      <div className="flex items-center gap-3 text-xs text-ash">
+                        {prop.rooms && <span className="flex items-center gap-1"><BedDouble size={12} /> {prop.rooms}</span>}
+                        {prop.bathrooms && <span className="flex items-center gap-1"><Bath size={12} /> {prop.bathrooms}</span>}
+                        {prop.surface && <span className="flex items-center gap-1"><Maximize size={12} /> {prop.surface} mp</span>}
+                        {prop.landSurface && <span className="flex items-center gap-1"><Maximize size={12} /> {prop.landSurface} mp</span>}
+                      </div>
+                    </div>
+                  </Link>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* ============================================ */}
+      {/* DESPRE COMPANIE */}
+      {/* ============================================ */}
+      <section className="py-24 px-6 relative bg-surface">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <motion.div
@@ -178,13 +267,16 @@ export default function HomePage() {
             >
               <span className="text-xs tracking-[0.3em] uppercase text-gold mb-4 block">Cine suntem</span>
               <h2 className="font-display text-4xl md:text-5xl font-bold text-cream mb-6 leading-tight">
-                Construim <span className="gold-text">viitorul</span> cu experiență și preturi accesibile
+                Facem tot ce trebuie ca tu să fii <span className="gold-text">„enjoy"</span> în noua locuință
               </h2>
               <p className="text-lg text-ash leading-relaxed mb-6">
-                Societatea noastră activează cu succes pe piața lucrărilor de construcții-montaj, realizând lucrări de mare anvergură în domeniul construcțiilor civile, industriale și rezidențiale, precum și al construcțiilor de drumuri, poduri și restaurărilor clădirilor istorice.
+                O companie cu angajați profesioniști care au o bună și reușită experiență în tranzacții imobiliare, în colaborarea cu oamenii și cu unitățile necesare încheierii procedurilor.
+              </p>
+              <p className="text-lg text-ash leading-relaxed mb-6">
+                Îți identificăm nevoile, îți arătăm soluțiile, apoi ne ocupăm până la final de tranzacția ta. La sfârșitul tranzacției să te simți ACASĂ în noul tău cămin.
               </p>
               <ul className="grid grid-cols-2 gap-3 mb-8">
-                {["Construcții case și vile", "Instalații electrice", "Instalații sanitare", "Renovări și amenajări", "Drumuri și poduri", "Închirieri utilaje"].map((item, i) => (
+                {["Apartamente de vânzare", "Case și vile", "Garsoniere", "Terenuri", "Închirieri", "Ansambluri rezidențiale"].map((item, i) => (
                   <li key={i} className="flex items-center gap-2 text-sm text-ash">
                     <span className="w-1.5 h-1.5 rounded-full bg-gold" /> {item}
                   </li>
@@ -205,14 +297,14 @@ export default function HomePage() {
             >
               <div className="rounded-2xl overflow-hidden glass">
                 <img
-                  src="/edil/about.png"
+                  src="/enjoyresidence/images/listing-630-apt-3cam-titan.jpg"
                   alt={brand.name}
                   className="w-full h-[400px] object-cover"
                 />
               </div>
               <div className="absolute -bottom-6 -left-6 glass rounded-2xl p-6 hidden md:block">
-                <p className="font-display text-4xl font-bold gold-text">20+</p>
-                <p className="text-xs text-ash tracking-wide uppercase mt-1">Ani experiență</p>
+                <p className="font-display text-4xl font-bold gold-text">63+</p>
+                <p className="text-xs text-ash tracking-wide uppercase mt-1">Oferte active</p>
               </div>
             </motion.div>
           </div>
@@ -222,14 +314,14 @@ export default function HomePage() {
       {/* ============================================ */}
       {/* STATISTICI */}
       {/* ============================================ */}
-      <section className="py-20 px-6 bg-surface">
+      <section className="py-20 px-6 bg-canvas">
         <div className="max-w-5xl mx-auto">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {[
-              { icon: Home, value: "20+", label: "Ani experiență" },
-              { icon: Briefcase, value: "100+", label: "Lucrări realizate" },
-              { icon: Award, value: "ISO", label: "Certificare calitate" },
-              { icon: Clock, value: "24/7", label: "Disponibilitate echipe" },
+              { icon: Home, value: "57", label: "Oferte vânzare" },
+              { icon: Briefcase, value: "6", label: "Oferte închiriere" },
+              { icon: Building, value: "14", label: "Ansambluri rezidențiale" },
+              { icon: Clock, value: "24/7", label: "Consultanță imobiliară" },
             ].map((stat, i) => (
               <motion.div
                 key={i}
@@ -254,7 +346,7 @@ export default function HomePage() {
       {/* ============================================ */}
       {/* VALORI */}
       {/* ============================================ */}
-      <section className="py-24 px-6 bg-canvas">
+      <section className="py-24 px-6 bg-surface">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: -40 }}
@@ -293,7 +385,73 @@ export default function HomePage() {
       </section>
 
       {/* ============================================ */}
-      {/* SERVICII */}
+      {/* CATEGORII (în loc de servicii) */}
+      {/* ============================================ */}
+      <section className="py-24 px-6 bg-canvas">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: -40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.6, ease: [0.25, 0.4, 0.25, 1] }}
+            className="text-center mb-16"
+          >
+            <span className="text-xs tracking-[0.3em] uppercase text-gold mb-4 block">Ce oferim</span>
+            <h2 className="font-display text-4xl md:text-5xl font-bold text-cream">Tipuri de proprietăți</h2>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {categories.map((cat, i) => {
+              const animations = [
+                { initial: { opacity: 0, x: -40 }, animate: { opacity: 1, x: 0 } },
+                { initial: { opacity: 0, scale: 0.9 }, animate: { opacity: 1, scale: 1 } },
+                { initial: { opacity: 0, x: 40 }, animate: { opacity: 1, x: 0 } },
+              ];
+              const anim = animations[i % 3];
+              const href = cat.slug === "inchirieri" ? "/inchirieri-utilaje" : cat.slug === "ansambluri" ? "/portofoliu" : "/servicii";
+              return (
+                <motion.div
+                  key={cat.slug}
+                  initial={anim.initial}
+                  whileInView={anim.animate}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ duration: 0.6, delay: (i % 3) * 0.1, ease: [0.25, 0.4, 0.25, 1] }}
+                  style={{ willChange: "transform, opacity" }}
+                >
+                  <Link
+                    href={href}
+                    className="group block glass rounded-2xl overflow-hidden hover:border-gold/30 transition-all duration-500 h-full"
+                  >
+                    <div className="relative h-48 overflow-hidden bg-ink/50 flex items-center justify-center">
+                      <img
+                        src={cat.image}
+                        alt={cat.title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/40 to-transparent" />
+                      <div className="absolute bottom-4 left-4 flex items-center gap-3">
+                        <div className="w-10 h-10 rounded-lg bg-gold/20 backdrop-blur-sm flex items-center justify-center">
+                          <cat.icon size={20} className="text-gold" />
+                        </div>
+                        <h3 className="font-display text-lg font-bold text-cream">{cat.title}</h3>
+                      </div>
+                    </div>
+                    <div className="p-5">
+                      <p className="text-sm text-ash leading-relaxed mb-4">{cat.text}</p>
+                      <span className="text-gold text-sm flex items-center gap-1 group-hover:gap-2 transition-all">
+                        Vezi ofertele <ArrowRight size={14} />
+                      </span>
+                    </div>
+                  </Link>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* ============================================ */}
+      {/* TESTIMONIALE */}
       {/* ============================================ */}
       <section className="py-24 px-6 bg-surface">
         <div className="max-w-7xl mx-auto">
@@ -304,12 +462,12 @@ export default function HomePage() {
             transition={{ duration: 0.6, ease: [0.25, 0.4, 0.25, 1] }}
             className="text-center mb-16"
           >
-            <span className="text-xs tracking-[0.3em] uppercase text-gold mb-4 block">Ce facem</span>
-            <h2 className="font-display text-4xl md:text-5xl font-bold text-cream">Serviciile noastre</h2>
+            <span className="text-xs tracking-[0.3em] uppercase text-gold mb-4 block">Ce spun clienții</span>
+            <h2 className="font-display text-4xl md:text-5xl font-bold text-cream">Testimoniale</h2>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {services.map((srv, i) => {
+            {testimonials.map((t, i) => {
               const animations = [
                 { initial: { opacity: 0, x: -40 }, animate: { opacity: 1, x: 0 } },
                 { initial: { opacity: 0, scale: 0.9 }, animate: { opacity: 1, scale: 1 } },
@@ -318,38 +476,21 @@ export default function HomePage() {
               const anim = animations[i % 3];
               return (
                 <motion.div
-                  key={srv.slug}
+                  key={i}
                   initial={anim.initial}
                   whileInView={anim.animate}
                   viewport={{ once: true, margin: "-50px" }}
                   transition={{ duration: 0.6, delay: (i % 3) * 0.1, ease: [0.25, 0.4, 0.25, 1] }}
                   style={{ willChange: "transform, opacity" }}
+                  className="glass rounded-2xl p-6 hover:border-gold/20 transition-all duration-500"
                 >
-                  <Link
-                    href={srv.slug === "inchirieri-utilaje" ? "/inchirieri-utilaje" : `/servicii/${srv.slug}`}
-                    className="group block glass rounded-2xl overflow-hidden hover:border-gold/30 transition-all duration-500 h-full"
-                  >
-                    <div className="relative h-48 overflow-hidden bg-ink/50 flex items-center justify-center">
-                      <img
-                        src={srv.image}
-                        alt={srv.title}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/40 to-transparent" />
-                      <div className="absolute bottom-4 left-4 flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-lg bg-gold/20 backdrop-blur-sm flex items-center justify-center">
-                          <srv.icon size={20} className="text-gold" />
-                        </div>
-                        <h3 className="font-display text-lg font-bold text-cream">{srv.title}</h3>
-                      </div>
-                    </div>
-                    <div className="p-5">
-                      <p className="text-sm text-ash leading-relaxed mb-4">{srv.text}</p>
-                      <span className="text-gold text-sm flex items-center gap-1 group-hover:gap-2 transition-all">
-                        Vezi mai mult <ArrowRight size={14} />
-                      </span>
-                    </div>
-                  </Link>
+                  <div className="flex gap-1 mb-4">
+                    {[...Array(5)].map((_, j) => (
+                      <span key={j} className="text-gold text-sm">★</span>
+                    ))}
+                  </div>
+                  <p className="text-sm text-ash leading-relaxed mb-4 italic">&ldquo;{t.text}&rdquo;</p>
+                  <p className="text-xs text-gold font-semibold tracking-wide">— {t.name}</p>
                 </motion.div>
               );
             })}
@@ -370,16 +511,16 @@ export default function HomePage() {
           className="max-w-3xl mx-auto text-center"
         >
           <h2 className="font-display text-4xl md:text-5xl font-bold text-cream mb-6">
-            Construim <span className="gold-text">viitorul</span> împreună
+            Găsește <span className="gold-text">locuința</span> potrivită
           </h2>
           <p className="text-lg text-ash mb-10">
-            Aveți un proiect de realizat? Solicitați o cotație de preț și vă răspundem în cel mai scurt timp.
+            Sună-ne sau completează formularul de contact și te ajutăm să găsești proprietatea ideală, cu consultanță completă până la finalul tranzacției.
           </p>
           <Link
             href="/contact"
             className="inline-flex items-center gap-2 px-10 py-5 bg-gold text-ink font-semibold rounded-lg hover:bg-gold-light transition-colors duration-300 text-lg"
           >
-            Obțineți o cotație <ArrowRight size={20} />
+            Contactează-ne <ArrowRight size={20} />
           </Link>
         </motion.div>
       </section>

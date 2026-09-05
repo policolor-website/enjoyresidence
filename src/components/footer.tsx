@@ -16,19 +16,19 @@ export default function Footer() {
             <p className="text-sm text-ash leading-relaxed mb-6">
               {brand.description}
             </p>
-            <p className="text-xs text-stone">{brand.legalName}{brand.experience && ` • ${brand.experience} experiență`}</p>
+            <p className="text-xs text-stone">{brand.legalName} • Partener <a href={brand.partnerUrl} target="_blank" rel="noopener noreferrer" className="hover:text-gold transition-colors">{brand.partner}</a></p>
           </div>
 
-          {/* Servicii */}
+          {/* Oferte */}
           <div>
-            <h4 className="font-display text-lg text-gold mb-5">Serviciile noastre</h4>
+            <h4 className="font-display text-lg text-gold mb-5">Oferte</h4>
             <ul className="space-y-3">
-              <li><Link href="/servicii/constructii-case" className="text-sm text-ash hover:text-gold transition-colors">Construcții Case</Link></li>
-              <li><Link href="/servicii/instalatii-electrice" className="text-sm text-ash hover:text-gold transition-colors">Instalații Electrice</Link></li>
-              <li><Link href="/servicii/instalatii-sanitare" className="text-sm text-ash hover:text-gold transition-colors">Instalații Sanitare</Link></li>
-              <li><Link href="/servicii/renovari-amenajari" className="text-sm text-ash hover:text-gold transition-colors">Renovări / Amenajări</Link></li>
-              <li><Link href="/servicii/drumuri-poduri" className="text-sm text-ash hover:text-gold transition-colors">Drumuri și Poduri</Link></li>
-              <li><Link href="/inchirieri-utilaje" className="text-sm text-ash hover:text-gold transition-colors">Închirieri Utilaje</Link></li>
+              <li><Link href="/servicii" className="text-sm text-ash hover:text-gold transition-colors">Vânzări imobiliare</Link></li>
+              <li><Link href="/inchirieri-utilaje" className="text-sm text-ash hover:text-gold transition-colors">Închirieri</Link></li>
+              <li><Link href="/portofoliu" className="text-sm text-ash hover:text-gold transition-colors">Ansambluri rezidențiale</Link></li>
+              <li><Link href="/servicii" className="text-sm text-ash hover:text-gold transition-colors">Apartamente</Link></li>
+              <li><Link href="/servicii" className="text-sm text-ash hover:text-gold transition-colors">Case și vile</Link></li>
+              <li><Link href="/servicii" className="text-sm text-ash hover:text-gold transition-colors">Terenuri</Link></li>
             </ul>
           </div>
 
@@ -37,11 +37,11 @@ export default function Footer() {
             <h4 className="font-display text-lg text-gold mb-5">Linkuri</h4>
             <ul className="space-y-3">
               <li><Link href="/" className="text-sm text-ash hover:text-gold transition-colors">Acasă</Link></li>
-              <li><Link href="/despre-noi" className="text-sm text-ash hover:text-gold transition-colors">Despre</Link></li>
-              <li><Link href="/servicii" className="text-sm text-ash hover:text-gold transition-colors">Servicii</Link></li>
-              <li><Link href="/inchirieri-utilaje" className="text-sm text-ash hover:text-gold transition-colors">Închirieri Utilaje</Link></li>
-              <li><Link href="/portofoliu" className="text-sm text-ash hover:text-gold transition-colors">Portofoliu</Link></li>
-              <li><Link href="/contact" className="text-sm text-ash hover:text-gold transition-colors">Obțineți o Cotație</Link></li>
+              <li><Link href="/servicii" className="text-sm text-ash hover:text-gold transition-colors">Vânzări</Link></li>
+              <li><Link href="/inchirieri-utilaje" className="text-sm text-ash hover:text-gold transition-colors">Închirieri</Link></li>
+              <li><Link href="/portofoliu" className="text-sm text-ash hover:text-gold transition-colors">Ansambluri</Link></li>
+              <li><Link href="/despre-noi" className="text-sm text-ash hover:text-gold transition-colors">Despre noi</Link></li>
+              <li><Link href="/contact" className="text-sm text-ash hover:text-gold transition-colors">Contact</Link></li>
             </ul>
           </div>
 
@@ -49,35 +49,21 @@ export default function Footer() {
           <div>
             <h4 className="font-display text-lg text-gold mb-5">Contact</h4>
             <div className="space-y-4">
-              {brand.address && (
-                <div className="flex items-start gap-3">
-                  <MapPin size={16} className="text-gold mt-0.5 shrink-0" />
-                  <p className="text-sm text-ash">{brand.address}</p>
-                </div>
-              )}
               <div className="flex items-start gap-3">
                 <MapPin size={16} className="text-gold mt-0.5 shrink-0" />
-                <p className="text-sm text-ash">{brand.workArea}</p>
+                <p className="text-sm text-ash">{brand.address}</p>
               </div>
               <div className="flex items-start gap-3">
                 <Phone size={16} className="text-gold mt-0.5 shrink-0" />
-                <div className="flex flex-col">
-                  <a href={`tel:${brand.phone.replace(/\s/g, "")}`} className="text-sm text-ash hover:text-gold transition-colors">{brand.phone}</a>
-                </div>
+                <a href={`tel:${brand.phone.replace(/\s/g, "")}`} className="text-sm text-ash hover:text-gold transition-colors">{brand.phone}</a>
               </div>
-              {brand.email && (
-                <div className="flex items-start gap-3">
-                  <Mail size={16} className="text-gold mt-0.5 shrink-0" />
-                  <a href={`mailto:${brand.email}`} className="text-sm text-ash hover:text-gold transition-colors">{brand.email}</a>
-                </div>
-              )}
+              <div className="flex items-start gap-3">
+                <Mail size={16} className="text-gold mt-0.5 shrink-0" />
+                <a href={`mailto:${brand.email}`} className="text-sm text-ash hover:text-gold transition-colors">{brand.email}</a>
+              </div>
               <div className="flex items-start gap-3">
                 <Clock size={16} className="text-gold mt-0.5 shrink-0" />
                 <p className="text-sm text-ash">{brand.program}</p>
-              </div>
-              <div className="flex items-start gap-3">
-                <Share2 size={16} className="text-gold mt-0.5 shrink-0" />
-                <a href={brand.social.facebook} target="_blank" rel="noopener noreferrer" className="text-sm text-ash hover:text-gold transition-colors">Facebook</a>
               </div>
             </div>
           </div>
@@ -86,7 +72,7 @@ export default function Footer() {
         <div className="hairline h-px w-full mb-8" />
         <div className="flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-xs text-stone">
-            © {new Date().getFullYear()} {brand.name} ({brand.legalName}). Toate drepturile rezervate.
+            © {new Date().getFullYear()} {brand.name}. Toate drepturile rezervate.
           </p>
           <p className="text-xs text-stone">{brand.tagline}</p>
         </div>
